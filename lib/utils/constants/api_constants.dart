@@ -1,1 +1,3 @@
-const String zSecretAPIKey = "the_secret_key";
+class APIConstants {
+  static const String zSecretAPIKey = "the_secret_key";
+}

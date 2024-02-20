@@ -14,11 +14,18 @@ dependencies:
     sdk: flutter
 
   #------------Utility Packages-----------#
-  iconsax: ^0.0.0
+  http: ^1.2.1
+  intl: ^0.19.0
+  logger: ^2.0.2+1
+  url_launcher: ^6.2.4
+
+  #  -------- Icons-------
+  iconsax: ^0.0.8
   cupertino_icons: ^1.0.6
 
   #-----------State management--------
-  get: ^4.6.5
+  get: ^4.6.6
+  get_storage: ^2.1.1
 
 
 
