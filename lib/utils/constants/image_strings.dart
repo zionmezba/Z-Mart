@@ -1,11 +1,11 @@
 class ZImages{
   // App Logos
-  static const String darkAppLogo = "assets/logos/";
-  static const String lightAppLogo = "assets/logos/";
+  static const String darkAppLogo = "assets/logos/logo-dark.png";
+  static const String lightAppLogo = "assets/logos/logo-white.png";
 
   // Social Logos
-  static const String google = "assets/logos/";
-  static const String facebook = "assets/logos/";
+  static const String google = "assets/logos/google-icon.png";
+  static const String facebook = "assets/logos/facebook-icon.png";
 
   // OnBoarding Images
   static const String onBoardingImage1 = "assets/images/onboarding_images/onboarding-image-1.gif";
