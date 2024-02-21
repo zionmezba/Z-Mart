@@ -12,7 +12,9 @@ class ZImages{
   static const String onBoardingImage2 = "assets/images/onboarding_images/onboarding-image-2.gif";
   static const String onBoardingImage3 = "assets/images/onboarding_images/onboarding-image-3.gif";
 
-
+  // Animations
+  static const String verifyEmailImage = "assets/images/animations/verify-email.gif";
+  static const String successVerifyEmailImage = "assets/images/animations/success-verify-email.gif";
 
 
 
