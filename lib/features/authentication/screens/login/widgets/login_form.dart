@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/features/authentication/screens/password_config/forgot_password.dart';
 import 'package:z_mart/features/authentication/screens/signup/signup.dart';
+import 'package:z_mart/navigation_manu.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
@@ -50,7 +51,8 @@ class ZLoginForm extends StatelessWidget {
 
                 // Forgot Pass
                 TextButton(
-                    onPressed: ()=> Get.to(()=> const ForgotPassword()), child: const Text(ZTexts.forgetPassword)),
+                    onPressed: () => Get.to(() => const ForgotPassword()),
+                    child: const Text(ZTexts.forgetPassword)),
               ],
             ),
             const SizedBox(
@@ -61,7 +63,7 @@ class ZLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.off(() => const NavigationMenu()),
                 child: const Text(ZTexts.signIn),
               ),
             ),
