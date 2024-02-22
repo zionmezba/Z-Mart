@@ -50,4 +50,6 @@ class ZTexts{
   static const String yourAccountCreatedTitle = "Your account successfully created!";
   static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
   static const String zContinue = "Continue";
+  static const String submit = "Submit";
+  static const String done = "Done";
 }

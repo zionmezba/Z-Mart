@@ -15,6 +15,7 @@ class ZImages{
   // Animations
   static const String verifyEmailImage = "assets/images/animations/verify-email.gif";
   static const String successVerifyEmailImage = "assets/images/animations/success-verify-email.gif";
+  static const String deliverySuccessEmailImage = "assets/images/animations/delivery-success-email.gif";
 
 
 

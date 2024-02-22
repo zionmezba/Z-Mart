@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:z_mart/features/authentication/screens/password_config/forgot_password.dart';
 import 'package:z_mart/features/authentication/screens/signup/signup.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -49,7 +50,7 @@ class ZLoginForm extends StatelessWidget {
 
                 // Forgot Pass
                 TextButton(
-                    onPressed: () {}, child: const Text(ZTexts.forgetPassword)),
+                    onPressed: ()=> Get.to(()=> const ForgotPassword()), child: const Text(ZTexts.forgetPassword)),
               ],
             ),
             const SizedBox(
