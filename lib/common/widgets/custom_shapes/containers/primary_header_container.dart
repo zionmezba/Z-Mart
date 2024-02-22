@@ -36,6 +36,7 @@ class ZPrimaryHeaderContainer extends StatelessWidget {
                   backgroundColor: ZColors.textWhite.withOpacity(0.1),
                 ),
               ),
+              child,
             ],
           ),
         ),
