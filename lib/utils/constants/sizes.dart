@@ -35,6 +35,8 @@ class ZSizes {
 
   // Border Radius
   static const double borderRadius = 4.0;
+  static const double borderRadiusMd = 8.0;
+  static const double borderRadiusLg = 12.0;
 
   // Divider Height
   static const double dividerHeight = 1.0;

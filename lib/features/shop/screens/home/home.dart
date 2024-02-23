@@ -5,6 +5,7 @@ import 'package:flutter/painting.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/common/widgets/custom_shapes/containers/circular_container.dart';
+import 'package:z_mart/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:z_mart/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:z_mart/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:z_mart/features/shop/screens/home/widgets/promo_slider.dart';
@@ -18,6 +19,7 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/image_text/vertical_image_text.dart';
 import '../../../../common/widgets/images/z_rounded_image.dart';
+import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -31,34 +33,34 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ZPrimaryHeaderContainer(
+            const ZPrimaryHeaderContainer(
               child: Column(
                 children: [
                   // Appbar
-                  const ZHomeAppbar(),
-                  const SizedBox(
+                  ZHomeAppbar(),
+                  SizedBox(
                     height: ZSizes.spaceBtwSections,
                   ),
 
                   // Search Bar
-                  const ZSearchContainer(
+                  ZSearchContainer(
                     text: "Search in Store",
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: ZSizes.spaceBtwSections,
                   ),
 
                   // Category Container Scrollable
                   Padding(
-                    padding: const EdgeInsets.only(left: ZSizes.defaultSpace),
+                    padding: EdgeInsets.only(left: ZSizes.defaultSpace),
                     child: Column(
                       children: [
-                        const ZSectionHeading(
+                        ZSectionHeading(
                           title: 'Popular Categories',
                           showActionButton: false,
                           textColor: Colors.white,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: ZSizes.spaceBtwItems,
                         ),
 
@@ -71,8 +73,26 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.all(ZSizes.defaultSpace),
-                child: ZPromoSlider(banners: [ZImages.banner3,ZImages.banner1,ZImages.banner2],)),
+              padding: const EdgeInsets.all(ZSizes.defaultSpace),
+              child: Column(
+                children: [
+                  const ZPromoSlider(
+                    banners: [
+                      ZImages.banner3,
+                      ZImages.banner1,
+                      ZImages.banner2
+                    ],
+                  ),
+                  const SizedBox(
+                    height: ZSizes.spaceBtwSections,
+                  ),
+                  ZGridLayout(
+                    itemCount: 6,
+                    itemBuilder: (_, index) => const ZProductCardVertical(),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
