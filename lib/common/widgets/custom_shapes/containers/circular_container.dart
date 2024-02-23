@@ -10,7 +10,7 @@ class ZCircularContainer extends StatelessWidget {
     this.radius = 400,
     this.padding = 0,
     this.child,
-    this.backgroundColor = ZColors.light,
+    this.backgroundColor = ZColors.white,
     this.margin,
   });
 

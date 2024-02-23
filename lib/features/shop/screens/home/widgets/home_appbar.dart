@@ -28,14 +28,14 @@ class ZHomeAppbar extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .headlineSmall!
-                .apply(color: ZColors.light),
+                .apply(color: ZColors.white),
           ),
         ],
       ),
       actions: [
         ZCartCounterIcon(
           onPressed: () {},
-          iconColor: ZColors.light,
+          iconColor: ZColors.white,
         ),
       ],
     );

@@ -11,7 +11,7 @@ class ZRoundedContainer extends StatelessWidget {
       this.child,
       this.showBorder = false,
       this.borderColor = ZColors.borderPrimary,
-      this.backgroundColor = ZColors.light,
+      this.backgroundColor = ZColors.white,
       this.padding,
       this.margin});
 

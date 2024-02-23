@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/styles/rounded_container.dart';
 import 'package:z_mart/common/widgets/images/z_rounded_image.dart';
@@ -11,6 +9,7 @@ import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../styles/shadows.dart';
 import '../../icons/z_circular_icon.dart';
+import '../../texts/brand_title_text_with_verified_icon.dart';
 import '../../texts/product_title_text.dart';
 import '../product_price.dart';
 
@@ -28,7 +27,7 @@ class ZProductCardVertical extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [ZShadowStyle.verticalProductShadow],
           borderRadius: BorderRadius.circular(ZSizes.productImageRadius),
-          color: dark ? ZColors.darkerGrey : ZColors.light,
+          color: dark ? ZColors.darkerGrey : ZColors.white,
         ),
         child: Column(
           children: [
@@ -36,7 +35,7 @@ class ZProductCardVertical extends StatelessWidget {
             ZRoundedContainer(
               height: 180,
               padding: const EdgeInsets.all(ZSizes.sm),
-              backgroundColor: dark ? ZColors.dark : ZColors.light,
+              backgroundColor: dark ? ZColors.black : ZColors.white,
               child: Stack(
                 children: [
                   const ZRoundedImage(
@@ -57,7 +56,7 @@ class ZProductCardVertical extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
-                            .apply(color: ZColors.dark),
+                            .apply(color: ZColors.black),
                       ),
                     ),
                   ),
@@ -78,59 +77,58 @@ class ZProductCardVertical extends StatelessWidget {
             ),
 
             ///Details
-            Padding(
-              padding: const EdgeInsets.only(left: ZSizes.sm),
+            const Padding(
+              padding: EdgeInsets.only(left: ZSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const ZProductTitleText(
+                  ZProductTitleText(
                     title: 'Green Nike Air Shoes',
                     smallSize: true,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: ZSizes.spaceBtwItems / 2,
                   ),
-                  Row(
-                    children: [
-                      Text('Nike',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: Theme.of(context).textTheme.labelMedium),
-                      const SizedBox(
-                        width: ZSizes.xs,
-                      ),
-                      const Icon(Iconsax.verify5,
-                          color: ZColors.primary, size: ZSizes.iconXs)
-                    ],
+                  ZBrandTitleTextVerifiedIcon(
+                    title: 'Nike',
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const ZProductPriceText(price: '1200',isLarge: true,),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: ZColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(ZSizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(ZSizes.productImageRadius),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          width: ZSizes.iconLg * 1.2,
-                          height: ZSizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(
-                              Iconsax.add,
-                              color: ZColors.light,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
                 ],
               ),
+            ),
+
+            const Spacer(),
+
+            ///Price Row-----
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: ZSizes.sm),
+                  child: ZProductPriceText(
+                    price: '1200',
+                    isLarge: true,
+                  ),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: ZColors.black,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(ZSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(ZSizes.productImageRadius),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: ZSizes.iconLg * 1.2,
+                    height: ZSizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(
+                        Iconsax.add,
+                        color: ZColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             )
           ],
         ),

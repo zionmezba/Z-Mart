@@ -86,6 +86,15 @@ class HomeScreen extends StatelessWidget {
                     height: ZSizes.spaceBtwSections,
                   ),
 
+                  /// --- Heading ---
+                  ZSectionHeading(
+                    title: 'Popular Products',
+                    onPressed: () {},
+                  ),
+                  const SizedBox(
+                    height: ZSizes.spaceBtwItems,
+                  ),
+
                   ///---------Products Cards---------
                   ZGridLayout(
                     itemCount: 6,

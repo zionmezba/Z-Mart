@@ -9,8 +9,8 @@ class ZVerticalImageText extends StatelessWidget {
     super.key,
     required this.image,
     required this.title,
-    this.textColor = ZColors.light,
-    this.backgroundColor = ZColors.light,
+    this.textColor = ZColors.white,
+    this.backgroundColor = ZColors.white,
     this.onTap,
   });
 
@@ -33,14 +33,14 @@ class ZVerticalImageText extends StatelessWidget {
               height: 56,
               padding: const EdgeInsets.all(ZSizes.sm),
               decoration: BoxDecoration(
-                color: backgroundColor ?? (dark ? ZColors.dark : ZColors.light),
+                color: backgroundColor ?? (dark ? ZColors.black : ZColors.white),
                 borderRadius: BorderRadius.circular(100),
               ),
               child: Center(
                 child: Image(
                   image: AssetImage(image),
                   fit: BoxFit.cover,
-                  color: (dark ? ZColors.light : ZColors.dark),
+                  color: (dark ? ZColors.white : ZColors.black),
                 ),
               ),
             ),

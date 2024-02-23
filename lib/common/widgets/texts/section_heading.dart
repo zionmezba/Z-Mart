@@ -6,18 +6,19 @@ class ZSectionHeading extends StatelessWidget {
     this.buttonTitle = 'View all',
     this.showActionButton = true,
     this.textColor,
-    this.onpPressed,
+    this.onPressed,
     required this.title,
   });
 
   final String title, buttonTitle;
   final bool showActionButton;
   final Color? textColor;
-  final void Function()? onpPressed;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
@@ -29,7 +30,7 @@ class ZSectionHeading extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         if (showActionButton)
-          TextButton(onPressed: onpPressed, child: Text(buttonTitle))
+          TextButton(onPressed: onPressed, child: Text(buttonTitle))
       ],
     );
   }

@@ -14,12 +14,14 @@ class ZSearchContainer extends StatelessWidget {
     this.showBackground = true,
     this.showBorder = true,
     this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: ZSizes.defaultSpace),
   });
 
   final String text;
   final IconData? icon;
   final bool showBackground, showBorder;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +29,15 @@ class ZSearchContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: ZSizes.defaultSpace),
+        padding: padding,
         child: Container(
           width: ZDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(ZSizes.md),
           decoration: BoxDecoration(
             color: showBackground
                 ? darkMode
-                    ? ZColors.dark
-                    : ZColors.light
+                    ? ZColors.black
+                    : ZColors.white
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(ZSizes.cardRadiusLg),
             border: showBorder ? Border.all(color: ZColors.grey) : null,
