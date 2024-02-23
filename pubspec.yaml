@@ -44,10 +44,12 @@ flutter:
   #---------------Local Assets----------
   assets:
     - assets/logos/
-    - assets/icons/
     - assets/images/
     - assets/images/onboarding_images/
     - assets/images/animations/
+    - assets/icons/
+    - assets/icons/categories/
+    - assets/icons/brands/
 
 
   #    --------Local Fonts---------
