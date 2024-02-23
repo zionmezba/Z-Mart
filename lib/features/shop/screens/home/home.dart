@@ -1,10 +1,6 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:z_mart/common/widgets/appbar/appbar.dart';
-import 'package:z_mart/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:z_mart/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:z_mart/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:z_mart/features/shop/screens/home/widgets/home_categories.dart';
@@ -36,13 +32,13 @@ class HomeScreen extends StatelessWidget {
             const ZPrimaryHeaderContainer(
               child: Column(
                 children: [
-                  // Appbar
+                  ///----- Appbar-----
                   ZHomeAppbar(),
                   SizedBox(
                     height: ZSizes.spaceBtwSections,
                   ),
 
-                  // Search Bar
+                  ///------ Search Bar--------
                   ZSearchContainer(
                     text: "Search in Store",
                   ),
@@ -50,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                     height: ZSizes.spaceBtwSections,
                   ),
 
-                  // Category Container Scrollable
+                  ///-------- Category Container Scrollable--------
                   Padding(
                     padding: EdgeInsets.only(left: ZSizes.defaultSpace),
                     child: Column(
@@ -64,18 +60,21 @@ class HomeScreen extends StatelessWidget {
                           height: ZSizes.spaceBtwItems,
                         ),
 
-                        ///Scrollable Cats
+                        ///----Scrollable Categories--------
                         ZHomeCategories(),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
+
+            ///-------Product Section-------
             Padding(
               padding: const EdgeInsets.all(ZSizes.defaultSpace),
               child: Column(
                 children: [
+                  ///-------Carousel Image slider---------
                   const ZPromoSlider(
                     banners: [
                       ZImages.banner3,
@@ -86,6 +85,8 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: ZSizes.spaceBtwSections,
                   ),
+
+                  ///---------Products Cards---------
                   ZGridLayout(
                     itemCount: 6,
                     itemBuilder: (_, index) => const ZProductCardVertical(),

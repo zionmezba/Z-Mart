@@ -106,7 +106,7 @@ class ZProductCardVertical extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ZProductPriceText(price: '1200',isLarge: true,),
+                      const ZProductPriceText(price: '1200',isLarge: true,),
                       Container(
                         decoration: const BoxDecoration(
                           color: ZColors.dark,
