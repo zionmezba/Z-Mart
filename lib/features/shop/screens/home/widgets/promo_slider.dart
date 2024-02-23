@@ -1,13 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:z_mart/features/shop/controllers/home_controller.dart';
 import 'package:z_mart/utils/constants/colors.dart';
 
 import '../../../../../common/widgets/custom_shapes/containers/circular_container.dart';
 import '../../../../../common/widgets/images/z_rounded_image.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class ZPromoSlider extends StatelessWidget {
@@ -37,7 +35,7 @@ class ZPromoSlider extends StatelessWidget {
               )
               .toList(),
         ),
-        SizedBox(
+        const SizedBox(
           height: ZSizes.spaceBtwItems,
         ),
         Center(
@@ -49,7 +47,7 @@ class ZPromoSlider extends StatelessWidget {
                   ZCircularContainer(
                     width: 20,
                     height: 4,
-                    margin: EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(right: 10),
                     backgroundColor: controller.carousalCurrentIndex.value == i
                         ? ZColors.primary
                         : ZColors.grey,
