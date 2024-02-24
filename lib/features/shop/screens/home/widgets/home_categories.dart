@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../../../common/widgets/image_text/vertical_image_text.dart';
 import '../../../../../utils/constants/image_strings.dart';
@@ -11,8 +10,6 @@ class ZHomeCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = ZHelperFunctions.isDarkMode(context);
-
     return SizedBox(
       height: 80,
       child: ListView.builder(

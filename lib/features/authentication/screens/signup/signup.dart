@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/widgets/login_signup/form_divider.dart';
 import 'package:z_mart/common/widgets/login_signup/social_buttons.dart';
 import 'package:z_mart/features/authentication/screens/signup/widgets/signup_form.dart';
-import 'package:z_mart/utils/constants/colors.dart';
 import 'package:z_mart/utils/constants/text_strings.dart';
-import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/constants/sizes.dart';
 

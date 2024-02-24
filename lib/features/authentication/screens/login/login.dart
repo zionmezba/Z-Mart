@@ -1,12 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/styles/spacing_style.dart';
 import 'package:z_mart/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:z_mart/features/authentication/screens/login/widgets/login_header.dart';
-import 'package:z_mart/utils/constants/colors.dart';
-import 'package:z_mart/utils/constants/image_strings.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
 import 'package:z_mart/utils/constants/text_strings.dart';
 import 'package:z_mart/utils/helpers/helper_functions.dart';
@@ -48,4 +44,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-

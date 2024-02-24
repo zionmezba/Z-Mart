@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:z_mart/common/styles/rounded_container.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/common/widgets/custom_shapes/containers/search_container.dart';
@@ -23,6 +21,7 @@ class StoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = ZHelperFunctions.isDarkMode(context);
     return Scaffold(
+      ///-------App bar---
       appBar: ZAppBar(
         title: Text(
           'Store',
@@ -30,9 +29,12 @@ class StoreScreen extends StatelessWidget {
         ),
         actions: [ZCartCounterIcon(onPressed: () {})],
       ),
+
+      ///----- Scroll view with two section nested scrolls----
       body: NestedScrollView(
         headerSliverBuilder: (_, innerBoxScrolled) {
           return [
+            ///---------Top Scroll view with popular brands---------
             SliverAppBar(
               automaticallyImplyLeading: false,
               pinned: true,

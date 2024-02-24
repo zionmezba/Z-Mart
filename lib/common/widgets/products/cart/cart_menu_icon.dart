@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/constants/colors.dart';
 
@@ -16,7 +15,6 @@ class ZCartCounterIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = ZHelperFunctions.isDarkMode(context);
     return Stack(
       children: [
         IconButton(
