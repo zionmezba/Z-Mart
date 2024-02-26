@@ -53,6 +53,7 @@ flutter:
     - assets/icons/brands/
     - assets/images/banners/
     - assets/images/products/
+    - assets/images/user/
 
 
   #    --------Local Fonts---------
