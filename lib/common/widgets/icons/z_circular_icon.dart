@@ -32,7 +32,7 @@ class ZCircularIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
         color: backgroundColor != null
             ? ZColors.black.withOpacity(0.9)
-            : ZColors.white.withOpacity(0.9),
+            : ZColors.white.withOpacity(0.01),
       ),
       child: IconButton(
         onPressed: onPressed,
