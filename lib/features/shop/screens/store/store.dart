@@ -27,7 +27,7 @@ class StoreScreen extends StatelessWidget {
             'Store',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          actions: [ZCartCounterIcon(onPressed: () {})],
+          actions: [ZCartCounterIcon(onPressed: () {}, iconColor: ZColors.white,)],
         ),
 
         ///----- Scroll view with two section nested scrolls----

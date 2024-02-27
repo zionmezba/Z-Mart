@@ -52,4 +52,6 @@ class ZTexts{
   static const String zContinue = "Continue";
   static const String submit = "Submit";
   static const String done = "Done";
+
+  static const String currencyBDT = "৳";
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/styles/rounded_container.dart';
 import 'package:z_mart/common/widgets/images/z_rounded_image.dart';
+import 'package:z_mart/features/shop/screens/product_details/product_detail.dart';
 import 'package:z_mart/utils/constants/colors.dart';
 import 'package:z_mart/utils/constants/image_strings.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
@@ -20,7 +22,7 @@ class ZProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = ZHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(()=> const ProductDetail()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
