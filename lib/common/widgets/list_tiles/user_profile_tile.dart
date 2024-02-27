@@ -8,11 +8,15 @@ import '../images/z_circular_image.dart';
 class ZUserProfileTile extends StatelessWidget {
   const ZUserProfileTile({
     super.key,
+    this.onPressed,
   });
+
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onPressed,
       leading: const ZCircularImage(
         image: ZImages.userImage,
         width: 50,
