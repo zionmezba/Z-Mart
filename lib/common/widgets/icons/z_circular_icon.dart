@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
+import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../utils/constants/colors.dart';
 
@@ -31,8 +32,10 @@ class ZCircularIcon extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
         color: backgroundColor != null
-            ? ZColors.black.withOpacity(0.9)
-            : ZColors.white.withOpacity(0.01),
+            ? backgroundColor!
+            : ZHelperFunctions.isDarkMode(context)
+                ? ZColors.black.withOpacity(0.9)
+                : ZColors.white.withOpacity(0.9),
       ),
       child: IconButton(
         onPressed: onPressed,
