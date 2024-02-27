@@ -13,7 +13,7 @@ class ZTabBar extends StatelessWidget implements PreferredSizeWidget {
     final dark = ZHelperFunctions.isDarkMode(context);
 
     return Material(
-      color: dark ? ZColors.black : ZColors.primary,
+      color: dark ? ZColors.black : ZColors.white,
       child: TabBar(
         tabs: tabs,
         isScrollable: true,
