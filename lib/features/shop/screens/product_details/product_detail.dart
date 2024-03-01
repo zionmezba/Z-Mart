@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
@@ -7,6 +8,7 @@ import 'package:z_mart/features/shop/screens/product_details/widgets/product_att
 import 'package:z_mart/features/shop/screens/product_details/widgets/product_image_slider.dart';
 import 'package:z_mart/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:z_mart/features/shop/screens/product_details/widgets/rating_share_widget.dart';
+import 'package:z_mart/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -85,7 +87,7 @@ class ProductDetail extends StatelessWidget {
                       const ZSectionHeading(
                           title: 'Reviews (190)', showActionButton: false),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: ()=> Get.to(()=> const ProductReviewsScreen()),
                           icon: const Icon(
                             Iconsax.arrow_right_3,
                             size: 18,
