@@ -14,20 +14,20 @@ class ZBillingAddressSection extends StatelessWidget {
         ZSectionHeading(
             title: 'Shipping Address', buttonTitle: 'Change', onPressed: () {}),
         Text('Zion Mezba', style: Theme.of(context).textTheme.bodyLarge),
-        SizedBox(height: ZSizes.spaceBtwItems / 2),
+        const SizedBox(height: ZSizes.spaceBtwItems / 2),
         Row(
           children: [
-            Icon(Icons.phone, color: Colors.grey, size: 16),
-            SizedBox(width: ZSizes.spaceBtwItems),
+            const Icon(Icons.phone, color: Colors.grey, size: 16),
+            const SizedBox(width: ZSizes.spaceBtwItems),
             Text('+880 1750-45879',
                 style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
-        SizedBox(height: ZSizes.spaceBtwItems / 2),
+        const SizedBox(height: ZSizes.spaceBtwItems / 2),
         Row(
           children: [
-            Icon(Icons.location_history, color: Colors.grey, size: 16),
-            SizedBox(width: ZSizes.spaceBtwItems),
+            const Icon(Icons.location_history, color: Colors.grey, size: 16),
+            const SizedBox(width: ZSizes.spaceBtwItems),
             Text(
               'Mirpur 1 Majar Road, Dhaka, Bangladesh',
               style: Theme.of(context).textTheme.bodyMedium,
@@ -35,7 +35,7 @@ class ZBillingAddressSection extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: ZSizes.spaceBtwItems / 2),
+        const SizedBox(height: ZSizes.spaceBtwItems / 2),
       ],
     );
   }

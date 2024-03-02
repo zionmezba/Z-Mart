@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:z_mart/common/styles/rounded_container.dart';
 import 'package:z_mart/common/widgets/success_screen/success_screen.dart';
-import 'package:z_mart/features/shop/screens/checkout/widgets/biling_amount_section.dart';
+import 'package:z_mart/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:z_mart/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:z_mart/features/shop/screens/checkout/widgets/billing_payment_section.dart';
 import 'package:z_mart/navigation_manu.dart';
