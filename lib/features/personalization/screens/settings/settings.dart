@@ -11,6 +11,7 @@ import 'package:z_mart/utils/constants/sizes.dart';
 import '../../../../common/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
 import '../../../shop/screens/cart/cart.dart';
+import '../../../shop/screens/order/order.dart';
 import '../address/address.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -60,7 +61,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.home,
                     title: 'My Addresses',
                     subTitle: 'Set shopping delivery address',
-                    onTap: ()=> Get.to(()=> const UserAddressScreen()),
+                    onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
                   ZSettingsMenuTile(
                     icon: Iconsax.shopping_cart,
@@ -72,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
                     subTitle: 'In progress orders',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const OrderScreen()),
                   ),
                   ZSettingsMenuTile(
                     icon: Iconsax.bank,
