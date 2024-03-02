@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/common/widgets/appbar/tabbbar.dart';
 import 'package:z_mart/common/widgets/custom_shapes/containers/search_container.dart';
@@ -11,13 +12,14 @@ import 'package:z_mart/utils/constants/sizes.dart';
 import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/brands/brand_card.dart';
+import '../cart/cart.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dark = ZHelperFunctions.isDarkMode(context);
+    // final dark = ZHelperFunctions.isDarkMode(context);
     return DefaultTabController(
       length: 5,
       child: Scaffold(
@@ -27,7 +29,12 @@ class StoreScreen extends StatelessWidget {
             'Store',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          actions: [ZCartCounterIcon(onPressed: () {}, iconColor: ZColors.white,)],
+          actions: [
+            ZCartCounterIcon(
+              onPressed: () => Get.to(() => const CartScreen()),
+              iconColor: ZColors.white,
+            )
+          ],
         ),
 
         ///----- Scroll view with two section nested scrolls----

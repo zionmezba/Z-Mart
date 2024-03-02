@@ -10,6 +10,7 @@ import 'package:z_mart/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
+import '../../../shop/screens/cart/cart.dart';
 import '../address/address.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -65,7 +66,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subTitle: 'Add or remove product from cart',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const CartScreen()),
                   ),
                   ZSettingsMenuTile(
                     icon: Iconsax.bag_tick,
