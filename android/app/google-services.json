@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "509927479665",
+    "project_id": "z-mart-10f28",
+    "storage_bucket": "z-mart-10f28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509927479665:android:2f933830a2a4a0b557fed0",
+        "android_client_info": {
+          "package_name": "com.zimizcorp.z_mart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509927479665-q1rd10g4uiidpbkh2tclapuib38lpeku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zimizcorp.z_mart",
+            "certificate_hash": "bc1232ef1d8db3f5f33a66918b212baa7106c9bf"
+          }
+        },
+        {
+          "client_id": "509927479665-ssnvb0p3oh7k2pgbqckvligi45lumqbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ7BH2GGLpYvx7USMVGjUC-IUev67tc5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509927479665-ssnvb0p3oh7k2pgbqckvligi45lumqbp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509927479665-8cbbe7q1ldkp37nhbmflappe5af7697b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.zMart"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
