@@ -21,8 +21,9 @@ class ZProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = ZHelperFunctions.isDarkMode(context);
+
     return GestureDetector(
-      onTap: () => Get.to(()=> const ProductDetail()),
+      onTap: () => Get.to(() => const ProductDetail()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -65,12 +66,13 @@ class ZProductCardVertical extends StatelessWidget {
 
                   ///Favourite Icon Button
                   const Positioned(
-                      top: 0,
-                      right: 0,
-                      child: ZCircularIcon(
-                        icon: Iconsax.heart5,
-                        color: Colors.red,
-                      )),
+                    top: 0,
+                    right: 0,
+                    child: ZCircularIcon(
+                      icon: Iconsax.heart5,
+                      color: Colors.red,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -104,6 +106,7 @@ class ZProductCardVertical extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                ///Price---
                 const Padding(
                   padding: EdgeInsets.only(left: ZSizes.sm),
                   child: ZProductPriceText(
@@ -111,6 +114,7 @@ class ZProductCardVertical extends StatelessWidget {
                     isLarge: true,
                   ),
                 ),
+                ///Add to cart---
                 Container(
                   decoration: const BoxDecoration(
                     color: ZColors.black,

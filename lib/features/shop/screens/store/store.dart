@@ -6,6 +6,7 @@ import 'package:z_mart/common/widgets/custom_shapes/containers/search_container.
 import 'package:z_mart/common/widgets/layouts/grid_layout.dart';
 import 'package:z_mart/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
+import 'package:z_mart/features/shop/screens/brand/all_brands.dart';
 import 'package:z_mart/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:z_mart/utils/constants/colors.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
@@ -72,7 +73,7 @@ class StoreScreen extends StatelessWidget {
                       ///------Featured Brands----------
                       ZSectionHeading(
                         title: 'Featured Brands',
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const AllBrandsScreen()),
                       ),
                       const SizedBox(
                         height: ZSizes.spaceBtwItems / 1.5,

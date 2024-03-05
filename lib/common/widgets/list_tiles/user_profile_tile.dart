@@ -16,7 +16,6 @@ class ZUserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onPressed,
       leading: const ZCircularImage(
         image: ZImages.userImage,
         width: 50,
@@ -31,7 +30,7 @@ class ZUserProfileTile extends StatelessWidget {
             .apply(color: ZColors.white),
       ),
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: const Icon(
           Iconsax.edit,
           color: ZColors.white,
