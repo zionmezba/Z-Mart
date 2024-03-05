@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:z_mart/features/authentication/screens/signup/verify_email.dart';
+import 'package:z_mart/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:z_mart/features/authentication/screens/signup/widgets/term_cond.dart';
+import 'package:z_mart/utils/helpers/helper_functions.dart';
+import 'package:z_mart/utils/validators/validator.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
@@ -14,26 +16,38 @@ class ZSignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
+
+    final dark = ZHelperFunctions.isDarkMode(context);
     return Form(
+      key: controller.signupFormKey,
       child: Column(
         children: [
           Row(
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: controller.firstName,
+                  validator: (value) => ZValidator.validateEmptyText('First Name', value),
                   expands: false,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                      floatingLabelStyle:
+                          TextStyle(color: dark ? Colors.white : Colors.black),
                       labelText: ZTexts.firstName,
-                      prefixIcon: Icon(Iconsax.user)),
+                      prefixIcon: const Icon(Iconsax.user)),
                 ),
               ),
               const SizedBox(width: ZSizes.spaceBetweenInputFields),
               Expanded(
                 child: TextFormField(
+                  controller: controller.lastName,
+                  validator: (value) => ZValidator.validateEmptyText('Last Name', value),
                   expands: false,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                      floatingLabelStyle:
+                          TextStyle(color: dark ? Colors.white : Colors.black),
                       labelText: ZTexts.lastName,
-                      prefixIcon: Icon(Iconsax.user)),
+                      prefixIcon: const Icon(Iconsax.user)),
                 ),
               ),
             ],
@@ -42,34 +56,52 @@ class ZSignupForm extends StatelessWidget {
             height: ZSizes.spaceBetweenInputFields,
           ),
           TextFormField(
+            controller: controller.username,
+            validator: (value) => ZValidator.validateEmptyText('User Name', value),
             expands: false,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
+                floatingLabelStyle:
+                    TextStyle(color: dark ? Colors.white : Colors.black),
                 labelText: ZTexts.username,
-                prefixIcon: Icon(Iconsax.user_edit)),
+                prefixIcon: const Icon(Iconsax.user_edit)),
           ),
           const SizedBox(
             height: ZSizes.spaceBetweenInputFields,
           ),
           TextFormField(
-            decoration: const InputDecoration(
-                labelText: ZTexts.email, prefixIcon: Icon(Iconsax.direct)),
+            controller: controller.email,
+            validator: (value) => ZValidator.validateEmail(value),
+            decoration: InputDecoration(
+                floatingLabelStyle:
+                    TextStyle(color: dark ? Colors.white : Colors.black),
+                labelText: ZTexts.email,
+                prefixIcon: const Icon(Iconsax.direct)),
           ),
           const SizedBox(
             height: ZSizes.spaceBetweenInputFields,
           ),
           TextFormField(
-            decoration: const InputDecoration(
-                labelText: ZTexts.phoneNo, prefixIcon: Icon(Iconsax.call)),
+            controller: controller.phoneNumber,
+            validator: (value) => ZValidator.validatePhoneNumber(value),
+            decoration: InputDecoration(
+                floatingLabelStyle:
+                    TextStyle(color: dark ? Colors.white : Colors.black),
+                labelText: ZTexts.phoneNo,
+                prefixIcon: const Icon(Iconsax.call)),
           ),
           const SizedBox(
             height: ZSizes.spaceBetweenInputFields,
           ),
           TextFormField(
+            controller: controller.password,
+            validator: (value) => ZValidator.validatePassword(value),
             obscureText: true,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
+              floatingLabelStyle:
+                  TextStyle(color: dark ? Colors.white : Colors.black),
               labelText: ZTexts.password,
-              suffixIcon: Icon(Iconsax.eye_slash),
-              prefixIcon: Icon(Iconsax.password_check),
+              suffixIcon: const Icon(Iconsax.eye_slash),
+              prefixIcon: const Icon(Iconsax.password_check),
             ),
           ),
           const SizedBox(
@@ -83,7 +115,7 @@ class ZSignupForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => Get.to(() => const VerifyEmailScreen()),
+              onPressed: () => controller.signup(),
               child: const Text(ZTexts.createAccount),
             ),
           ),

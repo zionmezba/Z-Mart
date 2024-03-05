@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/features/authentication/screens/password_config/forgot_password.dart';
 import 'package:z_mart/features/authentication/screens/signup/signup.dart';
 import 'package:z_mart/navigation_manu.dart';
+import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
@@ -15,24 +16,29 @@ class ZLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = ZHelperFunctions.isDarkMode(context);
     return Form(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: ZSizes.spaceBtwSections),
         child: Column(
           children: [
             TextFormField(
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(Iconsax.direct_right),
+              decoration: InputDecoration(
+                  floatingLabelStyle:
+                      TextStyle(color: dark ? Colors.white : Colors.black),
+                  prefixIcon: const Icon(Iconsax.direct_right),
                   labelText: ZTexts.email),
             ),
             const SizedBox(
               height: ZSizes.spaceBetweenInputFields,
             ),
             TextFormField(
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(Iconsax.password_check),
+              decoration: InputDecoration(
+                  floatingLabelStyle:
+                      TextStyle(color: dark ? Colors.white : Colors.black),
+                  prefixIcon: const Icon(Iconsax.password_check),
                   labelText: ZTexts.password,
-                  suffixIcon: Icon(Iconsax.eye_slash)),
+                  suffixIcon: const Icon(Iconsax.eye_slash)),
             ),
             const SizedBox(
               height: ZSizes.spaceBetweenInputFields / 2,

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/utils/constants/sizes.dart%20';
+import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 class AddNewAddressScreen extends StatelessWidget {
   const AddNewAddressScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final dark = ZHelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: const ZAppBar(
         title: Text("Add new address"),
@@ -20,8 +22,11 @@ class AddNewAddressScreen extends StatelessWidget {
             child: Column(
               children: [
                 TextFormField(
-                    decoration: const InputDecoration(
-                        prefixIcon: Icon(Iconsax.user), labelText: 'Name')),
+                    decoration: InputDecoration(
+                        floatingLabelStyle: TextStyle(
+                            color: dark ? Colors.white : Colors.black),
+                        prefixIcon: const Icon(Iconsax.user),
+                        labelText: 'Name')),
                 const SizedBox(height: ZSizes.spaceBetweenInputFields),
                 TextFormField(
                     decoration: const InputDecoration(
@@ -32,15 +37,19 @@ class AddNewAddressScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TextFormField(
-                          decoration: const InputDecoration(
-                              prefixIcon: Icon(Iconsax.building_31),
+                          decoration: InputDecoration(
+                              floatingLabelStyle: TextStyle(
+                                  color: dark ? Colors.white : Colors.black),
+                              prefixIcon: const Icon(Iconsax.building_31),
                               labelText: 'Street')),
                     ),
                     const SizedBox(width: ZSizes.spaceBetweenInputFields),
                     Expanded(
                       child: TextFormField(
-                          decoration: const InputDecoration(
-                              prefixIcon: Icon(Iconsax.code),
+                          decoration: InputDecoration(
+                              floatingLabelStyle: TextStyle(
+                                  color: dark ? Colors.white : Colors.black),
+                              prefixIcon: const Icon(Iconsax.code),
                               labelText: 'Postal Code')),
                     ),
                   ],
@@ -50,23 +59,29 @@ class AddNewAddressScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TextFormField(
-                          decoration: const InputDecoration(
-                              prefixIcon: Icon(Iconsax.building),
+                          decoration: InputDecoration(
+                              floatingLabelStyle: TextStyle(
+                                  color: dark ? Colors.white : Colors.black),
+                              prefixIcon: const Icon(Iconsax.building),
                               labelText: 'City')),
                     ),
                     const SizedBox(width: ZSizes.spaceBetweenInputFields),
                     Expanded(
                       child: TextFormField(
-                          decoration: const InputDecoration(
-                              prefixIcon: Icon(Iconsax.activity),
+                          decoration: InputDecoration(
+                              floatingLabelStyle: TextStyle(
+                                  color: dark ? Colors.white : Colors.black),
+                              prefixIcon: const Icon(Iconsax.activity),
                               labelText: 'State')),
                     ),
                   ],
                 ),
                 const SizedBox(height: ZSizes.spaceBetweenInputFields),
                 TextFormField(
-                    decoration: const InputDecoration(
-                        prefixIcon: Icon(Iconsax.global),
+                    decoration: InputDecoration(
+                        floatingLabelStyle: TextStyle(
+                            color: dark ? Colors.white : Colors.black),
+                        prefixIcon: const Icon(Iconsax.global),
                         labelText: 'Country')),
                 const SizedBox(height: ZSizes.defaultSpace),
                 SizedBox(
