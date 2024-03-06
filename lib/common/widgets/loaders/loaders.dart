@@ -49,7 +49,7 @@ class ZLoaders {
     );
   }
 
-  static warningSnackBar({required title, message = ''}) {
+  static warningSnackBar({required title, message = '', duration = 3}) {
     Get.snackbar(
       title,
       message,
@@ -58,7 +58,7 @@ class ZLoaders {
       colorText: ZColors.white,
       backgroundColor: Colors.orange,
       snackPosition: SnackPosition.BOTTOM,
-      duration: const Duration(seconds: 3),
+      duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(20),
       icon: const Icon(Iconsax.warning_2, color: ZColors.white),
     );

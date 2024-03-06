@@ -11,6 +11,7 @@ class SignupController extends GetxController {
 
   ///Variables
   final hidePassword = true.obs;
+  final privacyPolicy = false.obs;
   final email = TextEditingController();
   final lastName = TextEditingController();
   final firstName = TextEditingController();
@@ -31,9 +32,17 @@ class SignupController extends GetxController {
       if (!isConnected) return;
 
       //Form Validation
-      if (signupFormKey.currentState!.validate()) return;
+      if (!signupFormKey.currentState!.validate()) return;
 
       //Privacy policy check
+      if (!privacyPolicy.value) {
+        ZLoaders.warningSnackBar(
+            title: 'Accept Privacy Policy',
+            duration: 2,
+            message:
+                'In order to create an account you have to accept the privacy and policy terms of use');
+        return;
+      }
 
       //Register user in firebase auth and save user data
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:z_mart/features/authentication/screens/signup/widgets/term_cond.dart';
@@ -61,7 +60,7 @@ class ZSignupForm extends StatelessWidget {
           TextFormField(
             controller: controller.username,
             validator: (value) =>
-                ZValidator.validateEmptyText('User Name', value),
+                ZValidator.validateEmptyText('Username', value),
             expands: false,
             decoration: InputDecoration(
                 floatingLabelStyle:

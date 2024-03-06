@@ -4,7 +4,7 @@ class ZValidator {
       return 'Email is Required';
     }
 
-    final emailRegExp = RegExp(r'^[\w-.]+@([\w-]+\.)+\w-]{2,4}$');
+    final emailRegExp = RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]+$', caseSensitive: false);
 
     if (!emailRegExp.hasMatch(value)) {
       return 'Invalid Email Address';
@@ -22,13 +22,13 @@ class ZValidator {
       return 'Password must be at least 8 characters long.';
     }
 
-    if (value.contains(RegExp(r'[A-Z]'))) {
+    if (!value.contains(RegExp(r'[A-Z]'))) {
       return 'Password must contain at least one uppercase letter.';
     }
-    if (value.contains(RegExp(r'[0-9]'))) {
+    if (!value.contains(RegExp(r'[0-9]'))) {
       return 'Password must contain at least one number.';
     }
-    if (value.contains(RegExp(r'[!@#$%^&*(),.?";{}|<>_]'))) {
+    if (!value.contains(RegExp(r'[!@#$%^&*(),.?";{}|<>_]'))) {
       return 'Password must contain at least one special character.';
     }
     return null;
