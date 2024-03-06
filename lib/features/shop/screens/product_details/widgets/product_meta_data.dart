@@ -10,7 +10,6 @@ import '../../../../../common/widgets/products/product_price.dart';
 import '../../../../../common/widgets/texts/product_title_text.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart ';
-import '../../../../../utils/constants/text_strings.dart';
 
 class ZProductMetaData extends StatelessWidget {
   const ZProductMetaData({super.key});

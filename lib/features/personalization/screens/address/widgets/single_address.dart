@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/utils/constants/colors.dart';
@@ -17,7 +16,7 @@ class ZSingleAddress extends StatelessWidget {
     final dark = ZHelperFunctions.isDarkMode(context);
 
     return ZRoundedContainer(
-      padding: EdgeInsets.all(ZSizes.md),
+      padding: const EdgeInsets.all(ZSizes.md),
       width: double.infinity,
       showBorder: true,
       backgroundColor: selectedAddress
@@ -50,14 +49,14 @@ class ZSingleAddress extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.titleLarge),
-              SizedBox(height: ZSizes.sm / 2),
-              Text(
+              const SizedBox(height: ZSizes.sm / 2),
+              const Text(
                 '+880 1750-458479',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              SizedBox(height: ZSizes.sm / 2),
-              Text(
+              const SizedBox(height: ZSizes.sm / 2),
+              const Text(
                 'Mirpur 1 block a, Majar Road, Dhaka, Bangladesh',
                 maxLines: 2,
                 softWrap: true,

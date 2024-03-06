@@ -13,7 +13,7 @@ class OrderScreen extends StatelessWidget {
         showBackArrow: true,
           title: Text('My Orders',
               style: Theme.of(context).textTheme.headlineSmall)),
-    body: Padding(
+    body: const Padding(
       padding: EdgeInsets.all(ZSizes.defaultSpace),
 
       ///Orders

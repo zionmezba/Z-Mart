@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:z_mart/common/styles/rounded_container.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/features/personalization/screens/address/widgets/single_address.dart';
 import 'package:z_mart/utils/constants/colors.dart';
@@ -17,16 +16,16 @@ class UserAddressScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => const AddNewAddressScreen()),
-        child: Icon(
+        child: const Icon(
           Iconsax.add,
           color: ZColors.white,
         ),
       ),
-      appBar: ZAppBar(
+      appBar: const ZAppBar(
         title: Text("My Addresses"),
         showBackArrow: true,
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Padding(
           padding: EdgeInsetsDirectional.all(ZSizes.defaultSpace),
           child: Column(

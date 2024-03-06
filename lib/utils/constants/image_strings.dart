@@ -18,6 +18,7 @@ class ZImages{
   static const String successVerifyEmailImage = "assets/images/animations/success-verify-email.gif";
   static const String successCheckoutImage = "assets/images/animations/success-checkout.gif";
   static const String loadingAnimation = "assets/images/animations/loading.gif";
+  static const String docerAnimation = "assets/images/animations/animation-of-docer.json";
 
   // Categories icons
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
