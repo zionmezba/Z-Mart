@@ -10,6 +10,7 @@ class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
   ///Variables
+  final hidePassword = true.obs;
   final email = TextEditingController();
   final lastName = TextEditingController();
   final firstName = TextEditingController();

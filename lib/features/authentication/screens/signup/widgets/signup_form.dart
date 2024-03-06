@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:z_mart/features/authentication/screens/signup/widgets/term_cond.dart';
@@ -28,7 +29,8 @@ class ZSignupForm extends StatelessWidget {
               Expanded(
                 child: TextFormField(
                   controller: controller.firstName,
-                  validator: (value) => ZValidator.validateEmptyText('First Name', value),
+                  validator: (value) =>
+                      ZValidator.validateEmptyText('First Name', value),
                   expands: false,
                   decoration: InputDecoration(
                       floatingLabelStyle:
@@ -41,7 +43,8 @@ class ZSignupForm extends StatelessWidget {
               Expanded(
                 child: TextFormField(
                   controller: controller.lastName,
-                  validator: (value) => ZValidator.validateEmptyText('Last Name', value),
+                  validator: (value) =>
+                      ZValidator.validateEmptyText('Last Name', value),
                   expands: false,
                   decoration: InputDecoration(
                       floatingLabelStyle:
@@ -57,7 +60,8 @@ class ZSignupForm extends StatelessWidget {
           ),
           TextFormField(
             controller: controller.username,
-            validator: (value) => ZValidator.validateEmptyText('User Name', value),
+            validator: (value) =>
+                ZValidator.validateEmptyText('User Name', value),
             expands: false,
             decoration: InputDecoration(
                 floatingLabelStyle:
@@ -92,16 +96,26 @@ class ZSignupForm extends StatelessWidget {
           const SizedBox(
             height: ZSizes.spaceBetweenInputFields,
           ),
-          TextFormField(
-            controller: controller.password,
-            validator: (value) => ZValidator.validatePassword(value),
-            obscureText: true,
-            decoration: InputDecoration(
-              floatingLabelStyle:
-                  TextStyle(color: dark ? Colors.white : Colors.black),
-              labelText: ZTexts.password,
-              suffixIcon: const Icon(Iconsax.eye_slash),
-              prefixIcon: const Icon(Iconsax.password_check),
+
+          ///Password
+          Obx(
+            () => TextFormField(
+              controller: controller.password,
+              validator: (value) => ZValidator.validatePassword(value),
+              obscureText: controller.hidePassword.value,
+              decoration: InputDecoration(
+                floatingLabelStyle:
+                    TextStyle(color: dark ? Colors.white : Colors.black),
+                labelText: ZTexts.password,
+                suffixIcon: IconButton(
+                  onPressed: () => controller.hidePassword.value =
+                      !controller.hidePassword.value,
+                  icon: Icon(controller.hidePassword.value
+                      ? Iconsax.eye_slash
+                      : Iconsax.eye),
+                ),
+                prefixIcon: const Icon(Iconsax.password_check),
+              ),
             ),
           ),
           const SizedBox(
