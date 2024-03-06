@@ -20,11 +20,15 @@ class ZFullScreenLoader {
           child: Column(
             children: [
               const SizedBox(height: 250),
-          ZAnimationLoaderWidget(text: text, animation: animation)
+              ZAnimationLoaderWidget(text: text, animation: animation)
             ],
           ),
         ),
       ),
     );
+  }
+
+  static stopLoading() {
+    Navigator.of(Get.overlayContext!).pop();
   }
 }
