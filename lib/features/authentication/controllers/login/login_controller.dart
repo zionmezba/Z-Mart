@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:z_mart/features/personalization/controllers/user_controller.dart';
 
 import '../../../../common/widgets/loaders/loaders.dart';
 import '../../../../data/repositories/authentication/authentication_repository.dart';
@@ -15,6 +16,7 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final userController = Get.put(UserController());
 
   @override
   void onInit() {
@@ -55,6 +57,37 @@ class LoginController extends GetxController {
 
       ZFullScreenLoader.stopLoading();
 
+      //Redirect
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      //remove loader
+      ZFullScreenLoader.stopLoading();
+      ZLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  /// Google sign in
+  Future<void> googleSignIn() async {
+    try {
+      //Start Loading
+      ZFullScreenLoader.openLoadingDialogue(
+          'Logging you in...', ZImages.docerAnimation);
+
+      //Check internet
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        ZFullScreenLoader.stopLoading();
+        return;
+      }
+
+      //Google Auth
+      final userCredentials =
+          await AuthenticationRepository.instance.signInWithGoogle();
+
+      //save records
+      await userController.saveUserRecord(userCredentials);
+
+      ZFullScreenLoader.stopLoading();
       //Redirect
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
