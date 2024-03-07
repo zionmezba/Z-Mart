@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:z_mart/features/authentication/screens/login/login.dart';
 import 'package:z_mart/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:z_mart/features/authentication/screens/signup/verify_email.dart';
+import 'package:z_mart/navigation_manu.dart';
 
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
@@ -24,12 +26,22 @@ class AuthenticationRepository extends GetxController {
     screenRedirect();
   }
 
+  ///Functions to show the relevant screen
   screenRedirect() async {
-    //Local Storage
-    deviceStorage.writeIfNull('isFirstTime', true);
-    deviceStorage.read('isFirstTime') != true
-        ? Get.offAll(() => const LoginScreen())
-        : Get.offAll(() => const OnBoardingScreen());
+    final user = _auth.currentUser;
+    if (user != null) {
+      if (user.emailVerified) {
+        Get.offAll(() => const NavigationMenu());
+      } else {
+        Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
+      }
+    } else {
+      //Local Storage
+      deviceStorage.writeIfNull('isFirstTime', true);
+      deviceStorage.read('isFirstTime') != true
+          ? Get.offAll(() => const LoginScreen())
+          : Get.offAll(() => const OnBoardingScreen());
+    }
   }
 
 /*------------ Email and Password Sign in -----------------*/
@@ -49,7 +61,7 @@ class AuthenticationRepository extends GetxController {
     } on FormatException catch (_) {
       throw const ZFormatException();
     } on PlatformException catch (e) {
-      ZPlatformException(e.code).message;
+      throw ZPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -66,7 +78,7 @@ class AuthenticationRepository extends GetxController {
     } on FormatException catch (_) {
       throw const ZFormatException();
     } on PlatformException catch (e) {
-      ZPlatformException(e.code).message;
+      throw ZPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -85,6 +97,22 @@ class AuthenticationRepository extends GetxController {
 /*------------ ./end Federated identity and social Sign in -----------------*/
 
   ///LogoutUser - For any authentication
+  Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(() => const LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw ZFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw ZFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const ZFormatException();
+    } on PlatformException catch (e) {
+      throw ZPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
   ///DeleteUser - Remove user auth and firebase account
 }
