@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/features/authentication/screens/password_config/forgot_password.dart';
 import 'package:z_mart/features/authentication/screens/signup/signup.dart';
-import 'package:z_mart/navigation_manu.dart';
 import 'package:z_mart/utils/helpers/helper_functions.dart';
+import 'package:z_mart/utils/validators/validator.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
+import '../../../controllers/login/login_controller.dart';
 
 class ZLoginForm extends StatelessWidget {
   const ZLoginForm({
@@ -17,12 +18,18 @@ class ZLoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = ZHelperFunctions.isDarkMode(context);
+    final controller = Get.put(LoginController());
+
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: ZSizes.spaceBtwSections),
         child: Column(
           children: [
+            ///Email
             TextFormField(
+              controller: controller.email,
+              validator: (value) => ZValidator.validateEmail(value),
               decoration: InputDecoration(
                   floatingLabelStyle:
                       TextStyle(color: dark ? Colors.white : Colors.black),
@@ -32,25 +39,45 @@ class ZLoginForm extends StatelessWidget {
             const SizedBox(
               height: ZSizes.spaceBetweenInputFields,
             ),
-            TextFormField(
-              decoration: InputDecoration(
+
+            ///Password
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                validator: (value) =>
+                    ZValidator.validateEmptyText('Password', value),
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
                   floatingLabelStyle:
                       TextStyle(color: dark ? Colors.white : Colors.black),
-                  prefixIcon: const Icon(Iconsax.password_check),
                   labelText: ZTexts.password,
-                  suffixIcon: const Icon(Iconsax.eye_slash)),
+                  suffixIcon: IconButton(
+                    onPressed: () => controller.hidePassword.value =
+                        !controller.hidePassword.value,
+                    icon: Icon(controller.hidePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye),
+                  ),
+                  prefixIcon: const Icon(Iconsax.password_check),
+                ),
+              ),
             ),
             const SizedBox(
               height: ZSizes.spaceBetweenInputFields / 2,
             ),
 
-            ///Remember forget
+            ///Remember me
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    Obx(
+                      () => Checkbox(
+                          value: controller.rememberMe.value,
+                          onChanged: (value) => controller.rememberMe.value =
+                              !controller.rememberMe.value),
+                    ),
                     const Text(ZTexts.rememberMe),
                   ],
                 ),
@@ -69,7 +96,7 @@ class ZLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.off(() => const NavigationMenu()),
+                onPressed: () => controller.emailAndPasswordSignIn(),
                 child: const Text(ZTexts.signIn),
               ),
             ),

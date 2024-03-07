@@ -10,6 +10,7 @@ import 'package:z_mart/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../shop/screens/cart/cart.dart';
 import '../../../shop/screens/order/order.dart';
 import '../address/address.dart';
@@ -142,7 +143,8 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          AuthenticationRepository.instance.logout(),
                       child: const Text('Logout'),
                     ),
                   ),
