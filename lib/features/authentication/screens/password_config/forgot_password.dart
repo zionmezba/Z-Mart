@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:z_mart/features/authentication/screens/password_config/reset_password.dart';
+import 'package:z_mart/common/widgets/appbar/appbar.dart';
+import 'package:z_mart/features/authentication/controllers/forget_password_controller.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
 import 'package:z_mart/utils/constants/text_strings.dart';
+import 'package:z_mart/utils/helpers/helper_functions.dart';
+import 'package:z_mart/utils/validators/validator.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgotPasswordController());
+    final dark = ZHelperFunctions.isDarkMode(context);
+
     return Scaffold(
-      appBar: AppBar(),
+      appBar: const ZAppBar(
+        showBackArrow: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(ZSizes.defaultSpace),
@@ -36,22 +44,27 @@ class ForgotPassword extends StatelessWidget {
                 height: ZSizes.spaceBtwSections * 2,
               ),
 
-              ///Text Field
-              TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Iconsax.direct),
-                  labelText: ZTexts.email,
+              ///Text Form Field
+              Form(
+                key: controller.forgetPasswordFormKey,
+                child: TextFormField(
+                  controller: controller.email,
+                  validator: ZValidator.validateEmail,
+                  decoration: InputDecoration(
+                    floatingLabelStyle:
+                        TextStyle(color: dark ? Colors.white : Colors.black),
+                    labelText: ZTexts.email,
+                    prefixIcon: const Icon(Iconsax.direct),
+                  ),
                 ),
               ),
-              const SizedBox(
-                height: ZSizes.spaceBtwSections,
-              ),
+              const SizedBox(height: ZSizes.spaceBtwSections),
 
               ///Submit button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.off(() => const ResetPassword()),
+                    onPressed: () => controller.sendPasswordResetEmail(),
                     child: const Text(ZTexts.submit)),
               )
             ],

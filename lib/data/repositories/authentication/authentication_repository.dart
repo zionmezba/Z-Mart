@@ -8,6 +8,8 @@ import 'package:z_mart/features/authentication/screens/login/login.dart';
 import 'package:z_mart/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:z_mart/features/authentication/screens/signup/verify_email.dart';
 import 'package:z_mart/navigation_manu.dart';
+import 'package:z_mart/utils/constants/image_strings.dart';
+import 'package:z_mart/utils/popups/full_screen_loader.dart';
 
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
@@ -105,6 +107,21 @@ class AuthenticationRepository extends GetxController {
   ///ReAuthenticate -  ReAuthenticate user
 
   ///EmailAuthentication - Forget Password
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      return await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw ZFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw ZFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const ZFormatException();
+    } on PlatformException catch (e) {
+      throw ZPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
 /*------------ Federated identity and social Sign in -----------------*/
 
@@ -143,6 +160,10 @@ class AuthenticationRepository extends GetxController {
   ///LogoutUser - For any authentication
   Future<void> logout() async {
     try {
+      ZFullScreenLoader.openLoadingDialogue(
+          'Logging you out...', ZImages.docerAnimation);
+      // Show loading dialog for 2 seconds before sign out
+      await Future.delayed(const Duration(milliseconds: 1500));
       await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const LoginScreen());

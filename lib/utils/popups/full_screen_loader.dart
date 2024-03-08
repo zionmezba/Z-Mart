@@ -6,6 +6,7 @@ import 'package:z_mart/utils/helpers/helper_functions.dart';
 import '../../common/widgets/loaders/animation_loader.dart';
 
 class ZFullScreenLoader {
+
   static void openLoadingDialogue(String text, String animation) {
     final dark = ZHelperFunctions.isDarkMode(Get.context!);
     showDialog(
