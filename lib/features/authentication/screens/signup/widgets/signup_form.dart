@@ -117,14 +117,10 @@ class ZSignupForm extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: ZSizes.spaceBtwSections,
-          ),
+          const SizedBox(height: ZSizes.spaceBtwSections),
           // Terms and Cond
           const ZTermCond(),
-          const SizedBox(
-            height: ZSizes.spaceBtwSections,
-          ),
+          const SizedBox(height: ZSizes.spaceBtwSections),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(

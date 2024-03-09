@@ -36,6 +36,7 @@ class UserModel {
     return usernameWithPrefix;
   }
 
+  ///Empty user model
   static UserModel empty() => UserModel(
       id: '',
       firstName: '',
@@ -56,24 +57,22 @@ class UserModel {
     };
   }
 
+  ///Factory method to create a user model from a firebase document snapshot
   factory UserModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
-    if (document.data() == null) {
-      throw Exception('Missing data in document snapshot');
+    if (document.data() != null) {
+      final data = document.data() as Map<String, dynamic>;
+      return UserModel(
+        id: document.id,
+        firstName: data['FirstName'] ?? '',
+        lastName: data['LastName'] ?? '',
+        username: data['Username'] ?? '',
+        email: data['Email'] ?? '',
+        phoneNumber: data['PhoneNumber'] ?? '',
+        profilePicture: data['ProfilePicture'] ?? '',
+      );
+    } else {
+      return UserModel.empty();
     }
-
-    final data = document.data() as Map<String, dynamic>;
-
-    return UserModel(
-      id: document.id,
-      firstName: data['FirstName'] ?? '',
-      lastName: data['LastName'] ?? '',
-      username: data['Username'] ?? '',
-      email: data['Email'] ?? '',
-      phoneNumber: data['PhoneNumber'],
-      // Remove the null ish coalescing operator if optional
-      profilePicture: data[
-          'ProfilePicture'], // Remove the null ish coalescing operator if optional
-    );
   }
 }

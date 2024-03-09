@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:z_mart/data/repositories/user/user_repository.dart';
 import 'package:z_mart/features/authentication/screens/login/login.dart';
 import 'package:z_mart/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:z_mart/features/authentication/screens/signup/verify_email.dart';
@@ -22,6 +23,9 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+  ///get Authenticated user data
+  User? get authUser => _auth.currentUser;
+
   ///Called from main.dart on launch
   @override
   void onReady() {
@@ -30,7 +34,7 @@ class AuthenticationRepository extends GetxController {
   }
 
   ///Functions to show the relevant screen
-  screenRedirect() async {
+  void screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
@@ -105,6 +109,25 @@ class AuthenticationRepository extends GetxController {
   }
 
   ///ReAuthenticate -  ReAuthenticate user
+  Future<void> reAuthWithEmailAndPassword(String email, String password) async {
+    try {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      //Re Auth
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw ZFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw ZFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const ZFormatException();
+    } on PlatformException catch (e) {
+      throw ZPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
   ///EmailAuthentication - Forget Password
   Future<void> sendPasswordResetEmail(String email) async {
@@ -181,4 +204,20 @@ class AuthenticationRepository extends GetxController {
   }
 
   ///DeleteUser - Remove user auth and firebase account
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw ZFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw ZFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const ZFormatException();
+    } on PlatformException catch (e) {
+      throw ZPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 }

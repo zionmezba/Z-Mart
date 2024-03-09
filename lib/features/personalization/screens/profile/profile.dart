@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/common/widgets/images/z_circular_image.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
+import 'package:z_mart/features/personalization/controllers/user_controller.dart';
 import 'package:z_mart/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:z_mart/utils/constants/image_strings.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
+
+import 'widgets/change_name.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return Scaffold(
       appBar: const ZAppBar(
         showBackArrow: true,
@@ -59,12 +65,12 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   ZProfileMenu(
                     title: 'Name',
-                    value: 'Zion Mezba',
-                    onPressed: () {},
+                    value: controller.user.value.fullName,
+                    onPressed: () => Get.to(()=> const ChangeName()),
                   ),
                   ZProfileMenu(
                     title: 'Username',
-                    value: 'zion_mezba',
+                    value: controller.user.value.username,
                     onPressed: () {},
                   ),
 
@@ -78,18 +84,18 @@ class ProfileScreen extends StatelessWidget {
 
                   ZProfileMenu(
                     title: 'User ID',
-                    value: '721500444',
+                    value: controller.user.value.id,
                     onPressed: () {},
                     icon: Iconsax.copy,
                   ),
                   ZProfileMenu(
                     title: 'E-mail',
-                    value: 'mezbazion@gmil.com',
+                    value: controller.user.value.email,
                     onPressed: () {},
                   ),
                   ZProfileMenu(
                     title: 'Phone Number',
-                    value: '01750458479',
+                    value: controller.user.value.phoneNumber,
                     onPressed: () {},
                   ),
                   ZProfileMenu(
@@ -109,7 +115,7 @@ class ProfileScreen extends StatelessWidget {
 
                   Center(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => controller.deleteAccountWarningPopup(),
                       child: const Text(
                         'Delete Account',
                         style: TextStyle(color: Colors.red),

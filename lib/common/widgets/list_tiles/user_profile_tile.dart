@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:z_mart/features/personalization/controllers/user_controller.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -15,6 +16,8 @@ class ZUserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return ListTile(
       leading: const ZCircularImage(
         image: ZImages.userImage,
@@ -23,7 +26,7 @@ class ZUserProfileTile extends StatelessWidget {
         padding: 0,
       ),
       title: Text(
-        'Zion Mezba',
+        controller.user.value.fullName,
         style: Theme.of(context)
             .textTheme
             .headlineSmall!
@@ -36,7 +39,7 @@ class ZUserProfileTile extends StatelessWidget {
           color: ZColors.white,
         ),
       ),
-      subtitle: Text('mezbazion@gmail.com',
+      subtitle: Text(controller.user.value.email,
           style: Theme.of(context)
               .textTheme
               .bodyMedium!
