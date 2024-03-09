@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/common/widgets/images/z_circular_image.dart';
+import 'package:z_mart/common/widgets/loaders/shimmer.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
 import 'package:z_mart/features/personalization/controllers/user_controller.dart';
 import 'package:z_mart/features/personalization/screens/profile/widgets/profile_menu.dart';
@@ -35,13 +36,25 @@ class ProfileScreen extends StatelessWidget {
                     width: double.infinity,
                     child: Column(
                       children: [
-                        const ZCircularImage(
-                          image: ZImages.userImage,
-                          height: 80,
-                          width: 80,
-                        ),
+                        Obx(() {
+                          final networkImage =
+                              controller.user.value.profilePicture;
+                          final image = networkImage.isNotEmpty
+                              ? networkImage
+                              : ZImages.userImage;
+                          return controller.imageUploading.value
+                              ? const ZShimmerEffect(
+                                  height: 80, width: 80, radius: 80)
+                              : ZCircularImage(
+                                  image: image,
+                                  height: 80,
+                                  width: 80,
+                                  isNetworkImage: networkImage.isNotEmpty,
+                                );
+                        }),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () =>
+                              controller.uploadUserProfilePicture(),
                           child: const Text('Change Profile Picture'),
                         ),
                       ],
@@ -66,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
                   ZProfileMenu(
                     title: 'Name',
                     value: controller.user.value.fullName,
-                    onPressed: () => Get.to(()=> const ChangeName()),
+                    onPressed: () => Get.to(() => const ChangeName()),
                   ),
                   ZProfileMenu(
                     title: 'Username',

@@ -21,6 +21,7 @@ dependencies:
   logger: ^2.0.2+1
   lottie: ^3.1.0
   shimmer: ^3.0.0
+  image_picker: ^1.0.7
   url_launcher: ^6.2.4
   connectivity_plus: ^5.0.2
   flutter_native_splash: ^2.3.10
@@ -43,7 +44,9 @@ dependencies:
   firebase_core: ^2.26.0
   firebase_auth: ^4.17.7
   cloud_firestore: ^4.15.7
+  firebase_storage: ^11.6.9
   google_sign_in: ^6.2.1
+  cached_network_image: ^3.3.1
 
 
 dev_dependencies:
