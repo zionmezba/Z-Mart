@@ -13,6 +13,7 @@ import 'package:z_mart/utils/constants/sizes.dart';
 import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/brands/brand_card.dart';
+import '../../controllers/category_controller.dart';
 import '../cart/cart.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -21,8 +22,9 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final dark = ZHelperFunctions.isDarkMode(context);
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         ///-------App bar---
         appBar: ZAppBar(
@@ -90,36 +92,17 @@ class StoreScreen extends StatelessWidget {
                 ),
 
                 ///--------List of tabs------
-                bottom: const ZTabBar(
-                  tabs: [
-                    Tab(
-                      child: Text('Sports'),
-                    ),
-                    Tab(
-                      child: Text('Furniture'),
-                    ),
-                    Tab(
-                      child: Text('Electronics'),
-                    ),
-                    Tab(
-                      child: Text('Cloths'),
-                    ),
-                    Tab(
-                      child: Text('Cosmetics'),
-                    ),
-                  ],
-                ),
+                bottom: ZTabBar(
+                    tabs: categories
+                        .map((category) => Tab(child: Text(category.name)))
+                        .toList()),
               ),
             ];
           },
-          body: const TabBarView(
-            children: [
-              ZCategoryTab(),
-              ZCategoryTab(),
-              ZCategoryTab(),
-              ZCategoryTab(),
-              ZCategoryTab(),
-            ],
+          body: TabBarView(
+            children: categories
+                .map((category) => ZCategoryTab(category: category))
+                .toList(),
           ),
         ),
       ),

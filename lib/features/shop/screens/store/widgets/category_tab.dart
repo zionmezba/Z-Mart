@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:z_mart/common/widgets/layouts/grid_layout.dart';
 import 'package:z_mart/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
+import 'package:z_mart/features/shop/models/category_model.dart';
 
 import '../../../../../common/widgets/brands/brand_showcase.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class ZCategoryTab extends StatelessWidget {
-  const ZCategoryTab({super.key});
+  const ZCategoryTab({super.key, required this.category});
+
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,8 @@ class ZCategoryTab extends StatelessWidget {
                   ZImages.productImage2,
                   ZImages.productImage3
                 ],
-              ),const ZBrandShowcase(
+              ),
+              const ZBrandShowcase(
                 images: [
                   ZImages.productImage1,
                   ZImages.productImage2,

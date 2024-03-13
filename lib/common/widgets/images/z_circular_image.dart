@@ -39,7 +39,7 @@ class ZCircularImage extends StatelessWidget {
                 : ZColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: ClipRRect( 
+      child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
         child: Center(
           child: isNetworkImage
@@ -48,7 +48,7 @@ class ZCircularImage extends StatelessWidget {
                   fit: fit,
                   color: overlayColor,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      const ZShimmerEffect(height: 55, width: 55),
+                      const ZShimmerEffect(height: 80, width: 80, radius: 80),
                   errorWidget: (context, url, error) => const Icon(Icons.error))
               : Image(
                   fit: fit,
