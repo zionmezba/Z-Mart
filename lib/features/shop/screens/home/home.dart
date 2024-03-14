@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(ZSizes.defaultSpace),
               child: Column(
                 children: [
-                  ///-------Carousel Image slider---------
+                  ///-------Carousel Image Promo slider---------
                   const ZPromoSlider(
                     banners: [
                       ZImages.banner3,
