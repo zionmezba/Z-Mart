@@ -8,8 +8,8 @@ import 'package:z_mart/utils/constants/text_strings.dart';
 import 'package:z_mart/utils/helpers/helper_functions.dart';
 import 'package:z_mart/utils/validators/validator.dart';
 
-class ForgotPassword extends StatelessWidget {
-  const ForgotPassword({super.key});
+class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

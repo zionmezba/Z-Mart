@@ -84,7 +84,7 @@ class ZLoginForm extends StatelessWidget {
 
                 // Forgot Pass
                 TextButton(
-                    onPressed: () => Get.to(() => const ForgotPassword()),
+                    onPressed: () => Get.to(() => const ForgotPasswordScreen()),
                     child: const Text(ZTexts.forgetPassword)),
               ],
             ),
