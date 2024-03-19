@@ -9,11 +9,15 @@ import '../../../../../common/widgets/images/z_rounded_image.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../models/product_model.dart';
 
 class ZProductImageSlider extends StatelessWidget {
   const ZProductImageSlider({
     super.key,
+    required this.product,
   });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +27,13 @@ class ZProductImageSlider extends StatelessWidget {
         color: dark ? ZColors.darkerGrey : ZColors.light,
         child: Stack(
           children: [
-
             ///Main Large Image
             const SizedBox(
               height: 400,
               child: Padding(
                 padding: EdgeInsets.all(ZSizes.productImageRadius * 2),
                 child: Center(
-                    child: Image(
-                        image: AssetImage(ZImages.productImage1))),
+                    child: Image(image: AssetImage(ZImages.productImage1))),
               ),
             ),
 
@@ -47,25 +49,26 @@ class ZProductImageSlider extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   physics: const AlwaysScrollableScrollPhysics(),
-                  separatorBuilder: (_, __) =>
-                  const SizedBox(
+                  separatorBuilder: (_, __) => const SizedBox(
                     width: ZSizes.spaceBtwItems,
                   ),
-                  itemBuilder: (_, index) =>
-                      ZRoundedImage(
-                        imageUrl: ZImages.productImage1,
-                        width: 80,
-                        backgroundColor: dark ? ZColors.dark : ZColors.white,
-                        border: Border.all(color: ZColors.primary),
-                        padding: const EdgeInsets.all(ZSizes.sm),
-                      ),
+                  itemBuilder: (_, index) => ZRoundedImage(
+                    imageUrl: ZImages.productImage1,
+                    width: 80,
+                    backgroundColor: dark ? ZColors.dark : ZColors.white,
+                    border: Border.all(color: ZColors.primary),
+                    padding: const EdgeInsets.all(ZSizes.sm),
+                  ),
                 ),
               ),
             ),
             const ZAppBar(
               showBackArrow: true,
               actions: [
-                ZCircularIcon(icon: Iconsax.heart5, color: Colors.red,)
+                ZCircularIcon(
+                  icon: Iconsax.heart5,
+                  color: Colors.red,
+                )
               ],
             )
           ],
