@@ -28,9 +28,22 @@ class BrandModel {
     };
   }
 
+  ///map json oriented document snapshot
+  factory BrandModel.fromJson(Map<String, dynamic> document) {
+    final data = document;
+    if (data.isEmpty) {
+      return BrandModel.empty();
+    }
+    return BrandModel(
+        id: data['Id'] ?? '',
+        name: data['Name'] ?? '',
+        image: data['Image'] ?? '',
+        isFeatured: data['IsFeatured'] ?? false,
+        productsCount: int.parse((data['ProductsCount'] ?? 0).toString()));
+  }
 
   ///map json oriented document snapshot
-  factory BrandModel.fromJson(
+  factory BrandModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
@@ -44,3 +57,4 @@ class BrandModel {
       return BrandModel.empty();
     }
   }
+}

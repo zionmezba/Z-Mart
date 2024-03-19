@@ -3,6 +3,7 @@ import 'package:z_mart/common/widgets/layouts/grid_layout.dart';
 import 'package:z_mart/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
 import 'package:z_mart/features/shop/models/category_model.dart';
+import 'package:z_mart/features/shop/models/product_model.dart';
 
 import '../../../../../common/widgets/brands/brand_showcase.dart';
 import '../../../../../utils/constants/image_strings.dart';
@@ -52,8 +53,11 @@ class ZCategoryTab extends StatelessWidget {
               ),
 
               ZGridLayout(
-                  itemCount: 4,
-                  itemBuilder: (_, index) => const ZProductCardVertical())
+                itemCount: 4,
+                itemBuilder: (_, index) => ZProductCardVertical(
+                  product: ProductModel.empty(),
+                ),
+              )
             ],
           ),
         ),

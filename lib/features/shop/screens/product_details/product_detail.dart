@@ -11,8 +11,12 @@ import 'package:z_mart/features/shop/screens/product_details/widgets/rating_shar
 import 'package:z_mart/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
 
+import '../../models/product_model.dart';
+
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
+  const ProductDetail({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +91,8 @@ class ProductDetail extends StatelessWidget {
                       const ZSectionHeading(
                           title: 'Reviews (190)', showActionButton: false),
                       IconButton(
-                          onPressed: ()=> Get.to(()=> const ProductReviewsScreen()),
+                          onPressed: () =>
+                              Get.to(() => const ProductReviewsScreen()),
                           icon: const Icon(
                             Iconsax.arrow_right_3,
                             size: 18,

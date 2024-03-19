@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:z_mart/common/widgets/loaders/vertical_product_shimmer.dart';
 import 'package:z_mart/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:z_mart/features/shop/screens/all_products/all_products.dart';
 import 'package:z_mart/features/shop/screens/home/widgets/home_appbar.dart';
@@ -10,13 +11,16 @@ import 'package:z_mart/utils/constants/sizes.dart';
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
+import '../../../../common/widgets/loaders/shimmer.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../controllers/product_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -84,11 +88,25 @@ class HomeScreen extends StatelessWidget {
                     height: ZSizes.spaceBtwItems,
                   ),
 
-                  ///---------Products Cards---------
-                  ZGridLayout(
-                    itemCount: 6,
-                    itemBuilder: (_, index) => const ZProductCardVertical(),
-                  ),
+                  ///---------Popular - Products Cards---------
+                  Obx(() {
+                    //show loader
+                    if (controller.isLoading.value) {
+                      return const ZVerticalProductShimmer();
+                    }
+                    //If No Data Found
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                          child: Text('No Data Found!',
+                              style: Theme.of(context).textTheme.bodyMedium));
+                    } else {
+                      return ZGridLayout(
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (_, index) => ZProductCardVertical(
+                            product: controller.featuredProducts[index]),
+                      );
+                    }
+                  }),
                 ],
               ),
             ),
