@@ -46,14 +46,18 @@ class ZProductCardVertical extends StatelessWidget {
             ///Thumbnail wish discount tag
             ZRoundedContainer(
               height: 180,
+              width: 180,
               padding: const EdgeInsets.all(ZSizes.sm),
               backgroundColor: dark ? ZColors.black : ZColors.white,
               child: Stack(
                 children: [
                   ///Thumbnail Image
-                  ZRoundedImage(
-                    imageUrl: product.thumbnail,
-                    applyImageRadius: true,
+                  Center(
+                    child: ZRoundedImage(
+                      imageUrl: product.thumbnail,
+                      applyImageRadius: true,
+                      isNetworkImage: true,
+                    ),
                   ),
 
                   ///Sale tag
