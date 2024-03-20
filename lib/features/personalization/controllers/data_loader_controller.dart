@@ -18,7 +18,7 @@ class DataLoaderController extends GetxController{
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
 
   ///Upload Profile Image
-  void uploadUserProfilePicture() async {
+  void uploadCategoryIcon() async {
     try {
       final pickedImage = await ImagePicker().pickImage(
           source: ImageSource.gallery,

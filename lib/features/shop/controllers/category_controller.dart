@@ -46,4 +46,7 @@ class CategoryController extends GetxController {
   /// -- Load selected Category data
 
   /// -- Get category and sub category products
+
+  /// Upload Category
+
 }

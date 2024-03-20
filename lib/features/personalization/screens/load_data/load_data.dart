@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
+import 'package:z_mart/features/personalization/screens/load_data/add_categories.dart';
 
 import '../../../../common/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../utils/constants/sizes.dart ';
@@ -10,45 +12,45 @@ class LoadDataScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: ZAppBar(
+    return Scaffold(
+      appBar: const ZAppBar(
         title: Text('Upload Dummy Data'),
         showBackArrow: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(ZSizes.defaultSpace),
+          padding: const EdgeInsets.all(ZSizes.defaultSpace),
           child: Column(
             children: [
               ZSettingsMenuTile(
                 icon: Iconsax.category_25,
                 title: 'Upload Categories',
                 subTitle: 'Upload dummy categories',
-                trailing: Icon(Iconsax.arrow_up_1),
-                // onTap: controller.uploadUserProfilePicture(),
+                trailing: const Icon(Iconsax.arrow_up_1),
+                onTap: () => Get.to(() => const AddCategoriesScreen()),
               ),
-              ZSettingsMenuTile(
+              const ZSettingsMenuTile(
                 icon: Iconsax.shopping_cart5,
                 title: 'Upload Products',
                 subTitle: 'Add products to e-commerce site',
                 trailing: Icon(Iconsax.arrow_up_1),
                 // onTap: () {},
               ),
-              ZSettingsMenuTile(
+              const ZSettingsMenuTile(
                 icon: Iconsax.image5,
                 title: 'Upload Banners',
                 subTitle: 'Upload Products of featured products',
                 trailing: Icon(Iconsax.arrow_up_1),
                 // onTap: () {},
               ),
-              ZSettingsMenuTile(
+              const ZSettingsMenuTile(
                 icon: Iconsax.shop5,
                 title: 'Upload Brands',
                 subTitle: 'Upload brand names',
                 trailing: Icon(Iconsax.arrow_up_1),
                 // onTap: () {},
               ),
-              SizedBox(height: ZSizes.spaceBtwSections * 2.5),
+              const SizedBox(height: ZSizes.spaceBtwSections * 2.5),
             ],
           ),
         ),
