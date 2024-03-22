@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/features/personalization/screens/upload_data/add_categories.dart';
+import 'package:z_mart/features/personalization/screens/upload_data/add_product.dart';
 
 import '../../../../common/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../utils/constants/sizes.dart ';
@@ -29,12 +30,12 @@ class LoadDataScreen extends StatelessWidget {
                 trailing: const Icon(Iconsax.arrow_up_1),
                 onTap: () => Get.to(() => const AddCategoriesScreen()),
               ),
-              const ZSettingsMenuTile(
+              ZSettingsMenuTile(
                 icon: Iconsax.shopping_cart5,
                 title: 'Upload Products',
                 subTitle: 'Add products to e-commerce site',
-                trailing: Icon(Iconsax.arrow_up_1),
-                // onTap: () {},
+                trailing: const Icon(Iconsax.arrow_up_1),
+                onTap: () => Get.to(() => const AddProductScreen()),
               ),
               const ZSettingsMenuTile(
                 icon: Iconsax.image5,

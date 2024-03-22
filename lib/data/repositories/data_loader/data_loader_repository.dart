@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:z_mart/features/shop/models/category_model.dart';
+import 'package:z_mart/features/shop/models/product_model.dart';
 
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
@@ -42,6 +43,25 @@ class DataLoaderRepository extends GetxController {
     try {
       final ref = _db.collection("Categories").doc();
       ref.set(category.toJson());
+    } on FirebaseAuthException catch (e) {
+      throw ZFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw ZFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const ZFormatException();
+    } on PlatformException catch (e) {
+      throw ZPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  ///Save Product data to firestore
+  Future<void> saveProduct(ProductModel product) async {
+    try {
+      final ref = _db.collection("Product").doc(product.id);
+
+      ref.set(product.toJson());
     } on FirebaseAuthException catch (e) {
       throw ZFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
