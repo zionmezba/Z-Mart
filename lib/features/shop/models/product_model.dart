@@ -10,7 +10,7 @@ class ProductModel {
   String? sku;
   double price;
   String title;
-  DateTime? date;
+  Timestamp? date;
   double salePrice;
   String thumbnail;
   bool? isFeatured;
@@ -75,15 +75,16 @@ class ProductModel {
     if (document.data() == null) return ProductModel.empty();
 
     final data = document.data()!;
+
     return ProductModel(
       id: document.id,
       stock: data['Stock'] ?? 0,
-      title: data['Title'],
+      title: data['Title'] ?? '',
       price: double.parse((data['Price'] ?? 0.0).toString()),
       thumbnail: data['Thumbnail'] ?? '',
       description: data['Description'] ?? '',
       productType: data['ProductType'] ?? '',
-      sku: data['SKU'],
+      sku: data['SKU'] ?? '',
       brand: BrandModel.fromJson(data['Brand']),
       date: data['Date'],
       images: data['Images'] != null ? List<String>.from(data['Images']) : [],

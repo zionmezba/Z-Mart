@@ -21,7 +21,7 @@ class ProductRepository extends GetxController {
   ///Get limited featured products
   Future<List<ProductModel>> getFeaturedProducts() async {
     try {
-      final documentSnapshot = await _db.collection("Products").where('IsFeatured', isEqualTo: true).limit(4).get();
+      final documentSnapshot = await _db.collection("Product").where('IsFeatured', isEqualTo: true).limit(2).get();
       final list = documentSnapshot.docs
           .map((document) => ProductModel.fromSnapshot(document))
           .toList();

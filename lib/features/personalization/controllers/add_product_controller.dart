@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -133,7 +134,7 @@ class AddProductController extends GetxController {
         productType: ProductType.single.toString(),
         brand: BrandModel(id: '1', name: 'Z-Mart', image: ''),
         categoryId: 'Random',
-        date: DateTime.now(),
+        date: Timestamp.now(),
         isFeatured: isFeatured.value,
         productAttributes: [],
         productVariations: [],
