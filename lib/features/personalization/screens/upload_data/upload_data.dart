@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
-import 'package:z_mart/features/personalization/screens/load_data/add_categories.dart';
+import 'package:z_mart/features/personalization/screens/upload_data/add_categories.dart';
 
 import '../../../../common/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../utils/constants/sizes.dart ';

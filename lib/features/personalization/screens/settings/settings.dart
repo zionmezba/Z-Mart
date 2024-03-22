@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
-import 'package:z_mart/features/personalization/screens/load_data/load_data.dart';
+import 'package:z_mart/features/personalization/screens/upload_data/upload_data.dart';
 import 'package:z_mart/features/personalization/screens/profile/profile.dart';
 import 'package:z_mart/utils/constants/colors.dart';
 import 'package:z_mart/utils/constants/sizes.dart';

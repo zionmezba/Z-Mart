@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:z_mart/features/personalization/screens/load_data/load_data.dart';
+import 'package:z_mart/features/personalization/screens/upload_data/upload_data.dart';
 import 'package:z_mart/features/shop/models/category_model.dart';
 
 import '../../../common/widgets/loaders/loaders.dart';
