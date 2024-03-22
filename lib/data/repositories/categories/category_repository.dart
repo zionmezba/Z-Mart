@@ -55,7 +55,7 @@ class CategoryRepository extends GetxController {
         //store cat in firebase
         await _db
             .collection('Categories')
-            .doc(category.id)
+            .doc()
             .set(category.toJson());
       }
     } on FirebaseException catch (e) {
