@@ -4,7 +4,7 @@ import 'package:z_mart/features/shop/models/product_model.dart';
 import 'package:z_mart/utils/constants/enums.dart';
 import 'package:z_mart/utils/constants/text_strings.dart';
 
-import '../../../data/repositories/product/product_repository.dart';
+import '../../../../data/repositories/product/product_repository.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:z_mart/common/styles/rounded_container.dart';
 import 'package:z_mart/common/widgets/images/z_rounded_image.dart';
-import 'package:z_mart/features/shop/controllers/product_controller.dart';
+import 'package:z_mart/features/shop/controllers/product/product_controller.dart';
 import 'package:z_mart/features/shop/models/product_model.dart';
 import 'package:z_mart/features/shop/screens/product_details/product_detail.dart';
 import 'package:z_mart/utils/constants/colors.dart';

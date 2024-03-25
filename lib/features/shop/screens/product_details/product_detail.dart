@@ -40,7 +40,7 @@ class ProductDetail extends StatelessWidget {
                   const ZRatingAndShare(),
 
                   ///--Price title stock and brand
-                  const ZProductMetaData(),
+                  ZProductMetaData(product: product),
 
                   ///-- Attributes
                   const ZProductAttributes(),
