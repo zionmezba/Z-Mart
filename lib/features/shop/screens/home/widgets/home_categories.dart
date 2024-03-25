@@ -19,11 +19,14 @@ class ZHomeCategories extends StatelessWidget {
       if (controller.isLoading.value) return const ZCategoryShimmer();
       if (controller.featuredCategories.isEmpty) {
         return Center(
-            child: Text('No Data Found!',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .apply(color: Colors.white)));
+          child: Text(
+            'No Data Found!',
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .apply(color: Colors.white),
+          ),
+        );
       } else {
         return SizedBox(
           height: 80,

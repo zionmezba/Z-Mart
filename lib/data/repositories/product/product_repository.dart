@@ -21,10 +21,14 @@ class ProductRepository extends GetxController {
   ///Get limited featured products
   Future<List<ProductModel>> getFeaturedProducts() async {
     try {
-      final documentSnapshot = await _db.collection("Product").where('IsFeatured', isEqualTo: true).limit(2).get();
-      final list = documentSnapshot.docs
-          .map((document) => ProductModel.fromSnapshot(document))
-          .toList();
+      final documentSnapshot = await _db
+          .collection("Product")
+          .where('IsFeatured', isEqualTo: true)
+          .limit(3)
+          .get();
+      final doc = documentSnapshot.docs;
+      final maps = doc.map((document) => ProductModel.fromSnapshot(document));
+      final list = maps.toList();
       return list;
     } on FirebaseAuthException catch (e) {
       throw ZFirebaseAuthException(e.code).message;
@@ -35,10 +39,10 @@ class ProductRepository extends GetxController {
     } on PlatformException catch (e) {
       throw ZPlatformException(e.code).message;
     } catch (e) {
+      print(e);
       throw 'Something went wrong. Please try again';
     }
   }
-
 
   ///upload dummy data to the cloud
   Future<void> uploadDummyData(List<ProductModel> products) async {

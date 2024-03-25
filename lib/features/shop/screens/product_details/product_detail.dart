@@ -9,6 +9,7 @@ import 'package:z_mart/features/shop/screens/product_details/widgets/product_ima
 import 'package:z_mart/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:z_mart/features/shop/screens/product_details/widgets/rating_share_widget.dart';
 import 'package:z_mart/features/shop/screens/product_reviews/product_reviews.dart';
+import 'package:z_mart/utils/constants/enums.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
 
 import '../../models/product_model.dart';
@@ -43,7 +44,10 @@ class ProductDetail extends StatelessWidget {
                   ZProductMetaData(product: product),
 
                   ///-- Attributes
-                  const ZProductAttributes(),
+                  if (product.productType == ProductType.variable.toString())
+                    const ZProductAttributes(),
+                  if (product.productType == ProductType.variable.toString())
+                    const SizedBox(height: ZSizes.spaceBtwItems),
 
                   ///-- Checkout Button
                   const SizedBox(
@@ -60,7 +64,7 @@ class ProductDetail extends StatelessWidget {
                     height: ZSizes.spaceBtwSections,
                   ),
 
-                  ///-- description
+                  ///-- Description
                   const ZSectionHeading(
                     title: 'Description',
                     showActionButton: false,
@@ -68,16 +72,16 @@ class ProductDetail extends StatelessWidget {
                   const SizedBox(
                     height: ZSizes.spaceBtwItems,
                   ),
-                  const ReadMoreText(
-                    'This is a product description that can be collapsed and read more information about the product. This is a product description that can be collapsed and read more information about the product.',
+                  ReadMoreText(
+                    '${product.description}',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
                     trimExpandedText: ' Less',
-                    moreStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    lessStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    moreStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
                   ),
 
                   ///-- reviews

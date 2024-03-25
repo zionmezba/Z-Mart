@@ -40,12 +40,13 @@ class ProductVariationModel {
   factory ProductVariationModel.fromJson(Map<String, dynamic> document) {
     final data = document;
     if (data.isEmpty) return ProductVariationModel.empty();
+
     return ProductVariationModel(
       id: data['Id'] ?? '',
       price: double.parse((data['Price'] ?? 0.0).toString()),
       salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
       sku: data['SKU'] ?? '',
-      stock: data['Stock'] ?? '',
+      stock: data['Stock'] ?? 0,
       image: data['Image'] ?? '',
       description: data['Description'] ?? '',
       attributeValues: Map<String, String>.from(data['AttributeValues']),

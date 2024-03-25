@@ -78,7 +78,7 @@ class ProductModel {
 
     return ProductModel(
       id: document.id,
-      stock: data['Stock'] ?? 0,
+      stock: int.parse((data['Stock'] ?? 0).toString()),
       title: data['Title'] ?? '',
       price: double.parse((data['Price'] ?? 0.0).toString()),
       thumbnail: data['Thumbnail'] ?? '',
