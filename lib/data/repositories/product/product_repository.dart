@@ -24,7 +24,7 @@ class ProductRepository extends GetxController {
       final documentSnapshot = await _db
           .collection("Product")
           .where('IsFeatured', isEqualTo: true)
-          .limit(3)
+          .limit(4)
           .get();
       final doc = documentSnapshot.docs;
       final maps = doc.map((document) => ProductModel.fromSnapshot(document));

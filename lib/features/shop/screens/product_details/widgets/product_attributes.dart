@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:z_mart/common/styles/rounded_container.dart';
 import 'package:z_mart/common/widgets/products/product_price.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
+import 'package:z_mart/features/shop/models/product_model.dart';
 import 'package:z_mart/features/shop/screens/product_details/widgets/product_title_text.dart';
 import 'package:z_mart/utils/constants/colors.dart';
 import 'package:z_mart/utils/constants/sizes.dart%20';
@@ -11,7 +12,9 @@ import 'package:z_mart/utils/helpers/helper_functions.dart';
 import '../../../../../common/widgets/chips/choice_chip.dart';
 
 class ZProductAttributes extends StatelessWidget {
-  const ZProductAttributes({super.key});
+  const ZProductAttributes({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

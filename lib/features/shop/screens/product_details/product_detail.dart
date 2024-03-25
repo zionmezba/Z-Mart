@@ -45,7 +45,7 @@ class ProductDetail extends StatelessWidget {
 
                   ///-- Attributes
                   if (product.productType == ProductType.variable.toString())
-                    const ZProductAttributes(),
+                     ZProductAttributes(product: product),
                   if (product.productType == ProductType.variable.toString())
                     const SizedBox(height: ZSizes.spaceBtwItems),
 
