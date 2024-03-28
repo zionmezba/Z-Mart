@@ -22,7 +22,7 @@ class BrandProducts extends StatelessWidget {
             children: [
               ZBrandCard(showBorder: true),
               SizedBox(height: ZSizes.spaceBtwSections),
-              ZSortableProducts(),
+              ZSortableProducts(products: [],),
             ],
           ),
         ),

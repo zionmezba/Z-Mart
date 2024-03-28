@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/common/widgets/loaders/vertical_product_shimmer.dart';
 import 'package:z_mart/utils/constants/sizes.dart%20';
+import 'package:z_mart/utils/helpers/cloud_helper_functions.dart';
 
 import '../../../../common/widgets/products/sortable/sortable_products.dart';
 import '../../controllers/all_product_controller.dart';
@@ -31,21 +32,13 @@ class AllProductsScreen extends StatelessWidget {
               future: futureMethod ?? controller.fetchProductsByQuery(query),
               builder: (context, snapshot) {
                 const loader = ZVerticalProductShimmer();
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return loader;
-                }
-                if (!snapshot.hasData ||
-                    snapshot.data == null ||
-                    snapshot.data!.isEmpty) {
-                  return const Center(child: Text('No Data Found!'));
-                }
-                if (snapshot.hasError) {
-                  return const Center(child: Text('Something went wrong!'));
-                }
+                final widget = ZCloudHelperFunctions.checkMultiRecordState(
+                    snapshot: snapshot, loader: loader);
+                if(widget != null) return widget;
 
                 final products = snapshot.data!;
 
-                return ZSortableProducts(products: [],);
+                return ZSortableProducts(products: products);
               }),
         ),
       ),

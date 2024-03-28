@@ -19,12 +19,23 @@ class ZSortableProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(AllProductsController());
 
+    controller.assignProducts(products);
     return Column(
       children: [
         DropdownButtonFormField(
-          onChanged: (value) {},
+          value: controller.selectedSortOption.value,
+          onChanged: (value) {
+            controller.sortProducts(value!);
+          },
           decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
-          items: ['Name', 'Higher Price', 'Sale', 'Newest', 'Popularity']
+          items: [
+            'Name',
+            'Higher Price',
+            'Lower Price',
+            'Sale',
+            'Newest',
+            'Popularity'
+          ]
               .map((option) =>
                   DropdownMenuItem(value: option, child: Text(option)))
               .toList(),
@@ -34,7 +45,7 @@ class ZSortableProducts extends StatelessWidget {
         ///Products
         Obx(
           () => ZGridLayout(
-            itemCount: products.length,
+            itemCount: controller.products.length,
             itemBuilder: (_, index) => ZProductCardVertical(
               product: controller.products[index],
             ),
