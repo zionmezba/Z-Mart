@@ -39,7 +39,51 @@ class ProductRepository extends GetxController {
     } on PlatformException catch (e) {
       throw ZPlatformException(e.code).message;
     } catch (e) {
-      print(e);
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  ///Get ALL featured products
+  Future<List<ProductModel>> getAllFeaturedProducts() async {
+    try {
+      final documentSnapshot = await _db
+          .collection("Product")
+          .where('IsFeatured', isEqualTo: true)
+          .get();
+      final doc = documentSnapshot.docs;
+      final maps = doc.map((document) => ProductModel.fromSnapshot(document));
+      final list = maps.toList();
+      return list;
+    } on FirebaseAuthException catch (e) {
+      throw ZFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw ZFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const ZFormatException();
+    } on PlatformException catch (e) {
+      throw ZPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  ///Get limited featured products from query
+  Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
+    try {
+      final querySnapshot = await query.get();
+      final list = querySnapshot.docs
+          .map((document) => ProductModel.fromQuerySnapshot(document))
+          .toList();
+      return list;
+    } on FirebaseAuthException catch (e) {
+      throw ZFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw ZFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const ZFormatException();
+    } on PlatformException catch (e) {
+      throw ZPlatformException(e.code).message;
+    } catch (e) {
       throw 'Something went wrong. Please try again';
     }
   }
