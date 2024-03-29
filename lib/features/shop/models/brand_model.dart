@@ -48,11 +48,11 @@ class BrandModel {
     if (document.data() != null) {
       final data = document.data()!;
       return BrandModel(
-        id: document.id,
-        name: data['Name'] ?? '',
-        image: data['Image'] ?? '',
-        isFeatured: data['IsFeatured'] ?? false,
-      );
+          id: document.id,
+          name: data['Name'] ?? '',
+          image: data['Image'] ?? '',
+          isFeatured: data['IsFeatured'] ?? false,
+          productsCount: int.parse((data['ProductsCount'] ?? 0).toString()));
     } else {
       return BrandModel.empty();
     }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/utils/constants/sizes.dart%20';
-import 'package:get/get.dart';
 import '../../../../common/widgets/brands/brand_card.dart';
 import '../../../../common/widgets/loaders/vertical_product_shimmer.dart';
 import '../../../../common/widgets/products/sortable/sortable_products.dart';

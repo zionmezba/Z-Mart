@@ -58,6 +58,7 @@ class ZBrandCard extends StatelessWidget {
                     textColor: dark ? ZColors.white : ZColors.black,
                     brandTextSize: TextSizes.large,
                   ),
+                  const SizedBox(height: ZSizes.sm / 2),
                   Text(
                     '${brand.productsCount ?? 0} Products',
                     overflow: TextOverflow.ellipsis,
