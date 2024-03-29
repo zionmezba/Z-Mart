@@ -6,6 +6,7 @@ import 'package:z_mart/common/widgets/custom_shapes/containers/search_container.
 import 'package:z_mart/common/widgets/layouts/grid_layout.dart';
 import 'package:z_mart/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
+import 'package:z_mart/features/shop/controllers/brand_controller.dart';
 import 'package:z_mart/features/shop/screens/brand/all_brands.dart';
 import 'package:z_mart/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:z_mart/utils/constants/colors.dart';
@@ -13,6 +14,7 @@ import 'package:z_mart/utils/constants/sizes.dart';
 import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/brands/brand_card.dart';
+import '../../../../common/widgets/loaders/brand_shimmers.dart';
 import '../../controllers/category_controller.dart';
 import '../cart/cart.dart';
 
@@ -22,7 +24,9 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final dark = ZHelperFunctions.isDarkMode(context);
+    final controller = Get.put(BrandController());
     final categories = CategoryController.instance.featuredCategories;
+
     return DefaultTabController(
       length: categories.length,
       child: Scaffold(
@@ -80,13 +84,28 @@ class StoreScreen extends StatelessWidget {
                       const SizedBox(
                         height: ZSizes.spaceBtwItems / 1.5,
                       ),
-                      ZGridLayout(
-                        itemCount: 4,
-                        mainAxisExtent: 80,
-                        itemBuilder: (_, index) {
-                          return const ZBrandCard(showBorder: false);
-                        },
-                      ),
+                      Obx(() {
+                        if (controller.isLoading.value) {
+                          return const ZBrandShimmer();
+                        }
+
+                        if (controller.featuredBrands.isEmpty) {
+                          return Center(
+                              child: Text('No Data Found!',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .apply(color: Colors.white)));
+                        }
+                        return ZGridLayout(
+                          itemCount: controller.featuredBrands.length,
+                          mainAxisExtent: 80,
+                          itemBuilder: (_, index) {
+                            final brand = controller.featuredBrands[index];
+                            return ZBrandCard(showBorder: false, brand: brand);
+                          },
+                        );
+                      }),
                     ],
                   ),
                 ),

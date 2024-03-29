@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../features/shop/models/brand_model.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
@@ -24,12 +25,11 @@ class ZBrandShowcase extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: ZSizes.spaceBtwItems),
       child: Column(
         children: [
-          const ZBrandCard(
+          ZBrandCard(
             showBorder: false,
+            brand: BrandModel.empty(),
           ),
-          const SizedBox(
-            height: ZSizes.spaceBtwItems,
-          ),
+          const SizedBox(height: ZSizes.spaceBtwItems),
           Row(
             children: images
                 .map((image) => brandTopProductImageWidget(image, context))

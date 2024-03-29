@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:z_mart/features/shop/models/brand_model.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/enums.dart';
-import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../../styles/rounded_container.dart';
@@ -14,8 +14,10 @@ class ZBrandCard extends StatelessWidget {
     super.key,
     required this.showBorder,
     this.onTap,
+    required this.brand,
   });
 
+  final BrandModel brand;
   final bool showBorder;
   final void Function()? onTap;
 
@@ -33,8 +35,8 @@ class ZBrandCard extends StatelessWidget {
             ///--Icon---
             Flexible(
               child: ZCircularImage(
-                image: ZImages.clothIcon,
-                isNetworkImage: false,
+                image: brand.image,
+                isNetworkImage: true,
                 backgroundColor: Colors.transparent,
                 overlayColor: ZHelperFunctions.isDarkMode(context)
                     ? ZColors.white
@@ -52,12 +54,12 @@ class ZBrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ZBrandTitleTextVerifiedIcon(
-                    title: 'Nike',
+                    title: brand.name,
                     textColor: dark ? ZColors.white : ZColors.black,
                     brandTextSize: TextSizes.large,
                   ),
                   Text(
-                    '256 Products',
+                    '${brand.productsCount ?? 0} Products',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   )

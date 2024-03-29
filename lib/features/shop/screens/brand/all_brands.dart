@@ -4,6 +4,7 @@ import 'package:z_mart/common/widgets/appbar/appbar.dart';
 import 'package:z_mart/common/widgets/brands/brand_card.dart';
 import 'package:z_mart/common/widgets/layouts/grid_layout.dart';
 import 'package:z_mart/common/widgets/texts/section_heading.dart';
+import 'package:z_mart/features/shop/models/brand_model.dart';
 import 'package:z_mart/features/shop/screens/brand/brand_products.dart';
 import 'package:z_mart/utils/constants/sizes.dart%20';
 
@@ -32,7 +33,7 @@ class AllBrandsScreen extends StatelessWidget {
                   itemCount: 10,
                   itemBuilder: (_, index) => ZBrandCard(
                         showBorder: true,
-                        onTap: () => Get.to(() => const BrandProducts()),
+                        onTap: () => Get.to(() => const BrandProducts()), brand: BrandModel.empty(),
                       ))
             ],
           ),
