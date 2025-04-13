@@ -14,8 +14,11 @@ class ZImages{
 
   // Animations
   static const String verifyEmailImage = "assets/images/animations/verify-email.gif";
-  static const String successVerifyEmailImage = "assets/images/animations/success-verify-email.gif";
   static const String deliverySuccessEmailImage = "assets/images/animations/delivery-success-email.gif";
+  static const String successVerifyEmailImage = "assets/images/animations/success-verify-email.gif";
+  static const String successCheckoutImage = "assets/images/animations/success-checkout.gif";
+  static const String loadingAnimation = "assets/images/animations/loading.gif";
+  static const String docerAnimation = "assets/images/animations/animation-of-docer.json";
 
   // Categories icons
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
@@ -27,6 +30,18 @@ class ZImages{
   static const String furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
   static const String jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
   static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
+
+  // -- Brand Icons
+  static const String nikeLogo = "assets/icons/brands/nike.png";
+  static const String adidasLogo = "assets/icons/brands/adidas-logo.png";
+  static const String appleLogo = "assets/icons/brands/apple-logo.png";
+  static const String jordanLogo = "assets/icons/brands/jordan-logo.png";
+  static const String pumaLogo = "assets/icons/brands/puma-logo.png";
+  static const String zaraLogo = "assets/icons/brands/zara-logo.png";
+  static const String kenwoodLogo = "assets/icons/brands/kenwood-logo.png";
+  static const String hermanMillerLogo = "assets/icons/brands/herman-miller-logo.png";
+  static const String ikeaLogo = "assets/icons/brands/ikea_logo.png";
+  static const String acerLogo = "assets/icons/brands/acer_logo.png";
 
   // Carousel Images
   static const String banner1 = "assets/images/banners/banner_1.jpg";
@@ -112,5 +127,6 @@ class ZImages{
   static const String productImage76 = "assets/images/products/slipper-product-3.png";
   static const String productImage77= "assets/images/products/slipper-product.png";
 
-
+  //User Image
+  static const String userImage = "assets/images/user/user.png";
 }

@@ -1,30 +1,26 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:get/get.dart';
+import 'package:z_mart/common/widgets/loaders/vertical_product_shimmer.dart';
 import 'package:z_mart/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:z_mart/features/shop/screens/all_products/all_products.dart';
 import 'package:z_mart/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:z_mart/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:z_mart/features/shop/screens/home/widgets/promo_slider.dart';
-import 'package:z_mart/utils/constants/colors.dart';
 import 'package:z_mart/utils/constants/sizes.dart';
-import 'package:z_mart/utils/constants/text_strings.dart';
-import 'package:z_mart/utils/device/device_utility.dart';
-import 'package:z_mart/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
-import '../../../../common/widgets/image_text/vertical_image_text.dart';
-import '../../../../common/widgets/images/z_rounded_image.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
-import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
-import '../../../../utils/constants/image_strings.dart';
+import '../../controllers/product/product_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -65,6 +61,9 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: ZSizes.spaceBtwSections,
+                  )
                 ],
               ),
             ),
@@ -74,14 +73,8 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(ZSizes.defaultSpace),
               child: Column(
                 children: [
-                  ///-------Carousel Image slider---------
-                  const ZPromoSlider(
-                    banners: [
-                      ZImages.banner3,
-                      ZImages.banner1,
-                      ZImages.banner2
-                    ],
-                  ),
+                  ///-------Carousel Image Promo slider---------
+                  const ZPromoSlider(),
                   const SizedBox(
                     height: ZSizes.spaceBtwSections,
                   ),
@@ -89,17 +82,40 @@ class HomeScreen extends StatelessWidget {
                   /// --- Heading ---
                   ZSectionHeading(
                     title: 'Popular Products',
-                    onPressed: () {},
+                    onPressed: () => Get.to(
+                      () => AllProductsScreen(
+                        title: 'Popular Products',
+                        query: FirebaseFirestore.instance
+                            .collection('Product')
+                            .where('IsFeatured', isEqualTo: true)
+                            .limit(6),
+                        futureMethod: controller.fetchAllFeaturedProducts(),
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: ZSizes.spaceBtwItems,
                   ),
 
-                  ///---------Products Cards---------
-                  ZGridLayout(
-                    itemCount: 6,
-                    itemBuilder: (_, index) => const ZProductCardVertical(),
-                  ),
+                  ///---------Popular - Products Cards---------
+                  Obx(() {
+                    //show loader
+                    if (controller.isLoading.value) {
+                      return const ZVerticalProductShimmer();
+                    }
+                    //If No Data Found
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                          child: Text('No Data Found!',
+                              style: Theme.of(context).textTheme.bodyMedium));
+                    } else {
+                      return ZGridLayout(
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (_, index) => ZProductCardVertical(
+                            product: controller.featuredProducts[index]),
+                      );
+                    }
+                  }),
                 ],
               ),
             ),

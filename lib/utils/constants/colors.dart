@@ -28,7 +28,7 @@ class ZColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color light = Color(0xFFF6F6F6);
   static const Color black = Color(0xFF000000);
-  // static const Color dark = Color(0xFF272727);
+  static const Color dark = Color(0xFF272727);
   static const Color primaryBackground = Color(0xFFF3F5FF);
 
   // Background Container Colors
@@ -55,4 +55,6 @@ class ZColors {
   static const Color darkerGrey = Color(0xFF4F4F4F);
   static const Color darkGrey = Color(0xFF939393);
   static const Color grey = Color(0xFFE0E0E0);
+  static const Color softGrey = Color(0xFFF4F4F4);
+  static const Color lightGrey = Color(0xFFF9F9F9);
 }
